@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS public."Users"
     login character varying(20) NOT NULL,
     password_hash character varying(320) NOT NULL,
     role integer NOT NULL,
+    tokens character varying[],
     PRIMARY KEY (idu),
     UNIQUE (idu)
 );
@@ -84,6 +85,7 @@ CREATE TABLE IF NOT EXISTS public."Photo"
     resolution character varying(10) NOT NULL,
     extension character varying(5) NOT NULL,
     galleries integer[] NOT NULL,
+    photo_file bytea NOT NULL,
     PRIMARY KEY (idp),
     UNIQUE (idp)
 );
@@ -143,7 +145,7 @@ ALTER TABLE IF EXISTS public."Gallery_Access"
 
 ALTER TABLE IF EXISTS public."Backup"
     ADD FOREIGN KEY (gallery)
-    REFERENCES public."Gallery" (idg) MATCH SIMPLE
+    REFERENCES public."Gallery" (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
