@@ -145,7 +145,7 @@ ALTER TABLE IF EXISTS public."Gallery_Access"
 
 ALTER TABLE IF EXISTS public."Backup"
     ADD FOREIGN KEY (gallery)
-    REFERENCES public."Gallery" (id) MATCH SIMPLE
+    REFERENCES public."Gallery" (idg) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
