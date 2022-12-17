@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRouter = require('./routers/user');
-const { pool } = require('./db');
+const { pool } = require('./db/db');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -15,15 +15,7 @@ app.use(
     })
 );
 
-//app.use(userRouter);
-
-app.get('/test', (req, res) => {
-    pool.query('SELECT * FROM public."Roles"', (error, results) => {
-        if (error) throw error;
-        
-        res.status(200).json(results.rows);
-    }) 
-})
+app.use(userRouter);
 
 
 app.listen(port, () => {
