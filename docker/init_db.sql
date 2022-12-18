@@ -1,0 +1,30 @@
+--- Create Users for databases ---
+CREATE ROLE galery_admin WITH
+	LOGIN
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	NOREPLICATION
+	CONNECTION LIMIT -1
+	PASSWORD 'xxx';
+CREATE ROLE api WITH
+	LOGIN
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	NOREPLICATION
+	CONNECTION LIMIT -1
+	PASSWORD 'xxx';
+
+--- Create database ---
+CREATE DATABASE galery
+    WITH
+    OWNER = galery_admin
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+GRANT CONNECT ON DATABASE galery TO api;
+-- TODO: Add db creation code (../db/database.sql) and previliges --

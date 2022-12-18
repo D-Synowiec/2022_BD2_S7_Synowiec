@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15.1-alpine
+    container_name: gal_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    volumes:
+      - db:/var/lib/postresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    ports:
+     - "${POSTGRES_PORT}:5432"
+  pgadmin:
+    container_name: gal_pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+volumes:
+  db: 
+
