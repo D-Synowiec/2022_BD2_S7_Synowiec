@@ -1,44 +1,9 @@
---- Create Users for databases  ITS NOT WORKING!! NEED TO PREPARE BACKUP AND TRY WITH IT---
-BEGIN;
+#!/bin/bash
+set -e
 
-CREATE DATABASE galery
-    WITH
-    OWNER = galery_admin
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
-
-
-CREATE ROLE galery_admin WITH
-	LOGIN
-	NOSUPERUSER
-	NOCREATEDB
-	NOCREATEROLE
-	INHERIT
-	NOREPLICATION
-	CONNECTION LIMIT -1
-	PASSWORD 'xxx';
-CREATE ROLE api WITH
-	LOGIN
-	NOSUPERUSER
-	NOCREATEDB
-	NOCREATEROLE
-	INHERIT
-	NOREPLICATION
-	CONNECTION LIMIT -1
-	PASSWORD 'xxx';
-
---- Create database ---
-CREATE DATABASE galery
-    WITH
-    OWNER = galery_admin
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
-
-GRANT CONNECT ON DATABASE galery TO api;
-
-CREATE TABLE IF NOT EXISTS galery.public."Users"
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+    \c gallery;
+    CREATE TABLE IF NOT EXISTS public."Users"
 (
     idu integer NOT NULL,
     primary_name character varying(20) NOT NULL,
@@ -233,4 +198,4 @@ ALTER TABLE IF EXISTS public."Categorized_Photos"
     ON DELETE NO ACTION
     NOT VALID;
 
-END;
+EOSQL

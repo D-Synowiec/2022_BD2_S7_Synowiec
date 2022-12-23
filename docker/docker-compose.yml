@@ -10,16 +10,17 @@ services:
 
     volumes:
       - db:/var/lib/postresql/data
-      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+      - ./inittables.sh:/docker-entrypoint-initdb.d/inittables.sh
     ports:
      - "${POSTGRES_PORT}:5432"
-  pgadmin:
-    container_name: gal_pgadmin
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+  # pgadmin:
+  #   container_name: gal_pgadmin
+  #   image: dpage/pgadmin4
+  #   restart: always
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
 volumes:
   db: 
 

@@ -1,7 +1,7 @@
 
 # Projekt Galeria - Generacja Bazy Danych
 
-Pozwala on na wygenerowanie bazy danych, oraz uruchomienie API.
+Pozwala on na wygenerowanie bazy danych oraz wypełnienie jej tablicami.
 
 
 
@@ -11,14 +11,34 @@ Pozwala on na wygenerowanie bazy danych, oraz uruchomienie API.
 
 Aby uruchomić ten projekt, potrzebne są następujące zmienne środowiskowe:
 
-`POSTGRES_USER`
+`POSTGRES_USER` - Główny użytkownik bazy danych
 
-`POSTGRES_PORT`
+`POSTGRES_PASSWORD` - Hasło do głównego użytkownika bazy danych
 
-`POSTGRES_PASSWORD`
+`POSTGRES_PORT` - Port na którym ma zostać wystawiona baza danych
 
-Na czas tworzenie, potrzebne są jeszcze te zmienne (w finalnym produkcie, zostaną deprecated).
+## Run Locally
 
-`PGADMIN_DEFAULT_EMAIL`
+Aby móc postawić lokalnie bazę danych, potrzebujecie mieć zainstalowanego [Dockera](https://docs.docker.com/desktop/install/windows-install/).
+Klonujemy repozytorium na dysk
 
-`PGADMIN_DEFAULT_PASSWORD`
+```bash
+  git clone https://github.com/Anrsh/2022_BD2_S7_Synowiec.git
+```
+
+Wchodzimy do folderu docker
+
+```bash
+  cd docker
+```
+
+Tworzymy plik .env  i uzupełniamy w nim wszystkie potrzebne zmienne.
+
+Uruchamiamy kontener.
+
+```bash
+  docker-compose up
+```
+
+
+
