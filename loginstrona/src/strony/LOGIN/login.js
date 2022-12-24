@@ -20,7 +20,7 @@ function Login_strona(){
 
     const handleSubmit = (event) => {
       //przekierunkowanie("/https://www.twitch.tv/popo");
-      location.href="https://www.twitch.tv/popo";
+      window.location.href="https://www.twitch.tv/popo";
       event.preventDefault();
 
       // validate the form values
