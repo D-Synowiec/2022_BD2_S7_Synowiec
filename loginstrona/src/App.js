@@ -7,7 +7,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login_strona/>}/>
       <Route path="/home" element={<Home_strona/>}/>
-      <Route path="/" element={<Home_strona/>}/>
+      <Route path="/" element={<Login_strona/>}/>
       pierwsza strona to to samo logowanie trzeba to zmienić
       poza tym nwm jak sie robi tu komentarze
     </Routes>
