@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+.styl_linjiki{
+    background-color: pink;
+    /*
+    width: 250px;
+    height: 200px;
+    */
+
+    display: flex;
+    /*flex-direction: row;*//*bo domyślnie jest row*/ 
+    align-items: center;
+    justify-content: space-around;
+    justify-items:center;
+
+    font-family: 'Noto Sans', sans-serif;
+    
+    width: 100%;
+    border:0.5px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    padding: 2px;
+}
+
+.styl_linjiki:nth-child(odd){
+    background-color: rgb(255, 192, 245);
+}
+
+
+
+.styl_zdj{
+    width: 75px;
+    height: 75px;
+    object-fit: cover;/*miniaturke fajnie zrobi nie rozciągnie*/
+    overflow: hidden;
+}
+
+.styl_tekst1{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.5rem;
+    width: 17%;
+    overflow: hidden;
+}
+
+.styl_przycisk{
+    background-color: white;
+    width: 75px;
+    height: 25px;
+    border-radius: 5px;
+    /* overflow: hidden; */
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
+}
+
+.styl_przycisk:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+.styl_przycisk:active{
+        box-shadow: none;
+        transform: translateY(2px);
+        transition: 0.1s;
+}
+
+.styl_paska{
+    width:0.5px;
+    height: 120px; /*uwaga na errory tutaj */
+    background-color: black;
+}
+
+/* .styl_linjiki>*{flex-grow: 0; flex-shrink: 0;} */
+/* .styl_linjiki>*{flex-basis: 0;}; */
+/* .styl_linjiki>*{width: 1fr}; */
+/*.styl_linjiki>*{flex: 1 0 0px};*/
+/* .styl_linjiki>*{overflow: hidden; width: 16.666%;} */

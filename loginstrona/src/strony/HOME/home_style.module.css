@@ -8,6 +8,9 @@ body{
     background-color: aqua;
     width: 100vw;
     height: 100vh;
+    /* position: absolute; */
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
 }
 
 .user_pass{

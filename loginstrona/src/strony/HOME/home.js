@@ -2,6 +2,8 @@ import React,{useEffect,useState} from "react";
 import styl from "./home_style.module.css";
 import zdj from "../../pliki/popo.jpg";
 import {useNavigate} from "react-router-dom";
+import Linjika from "./komponenty/linjika"
+import Gora from "./komponenty/gora_linjika"
 
 function Home_strona(){
 
@@ -18,12 +20,32 @@ function Home_strona(){
       // call a login function
     }
 
+  const [dane_l,set_dane_l] = useState([
+    {miniaturka: "miniaturka", tytul: "nazwa", data:"data", rozmiar:"rozmiar", autor:"autor"},
+    {miniaturka: zdj, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
+    {miniaturka: zdj, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
+    {miniaturka: zdj, tytul: "popo", data:"06.01.2023", rozmiar:"20MB", autor:"MokrySuchar"},
+    {miniaturka: zdj, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
+    {miniaturka: zdj, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
+    {miniaturka: zdj, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"}
+  ])
+  
+  const rysunek_linjiki = dane_l.map((element)=>{
+    return(
+      <Linjika 
+      minaturka={element.miniaturka} 
+      tytul={element.tytul}
+      data={element.data}
+      rozmiar={element.rozmiar}
+      autor={element.autor}
+      />
+    )
+  })
+
 return (
     <div className={styl.moj_div}>
-      <form className={styl.user_pass} onSubmit={handleSubmit}>
-        <img className={styl.foto} src={zdj}/>
-        <button type="submit">POPO</button>
-      </form>
+      <Gora/>
+      {rysunek_linjiki}
     </div>
     
     );
