@@ -33,7 +33,7 @@ function Home_strona(){
   const rysunek_linjiki = dane_l.map((element)=>{
     return(
       <Linjika 
-      minaturka={element.miniaturka} 
+      miniaturka={element.miniaturka} 
       tytul={element.tytul}
       data={element.data}
       rozmiar={element.rozmiar}
