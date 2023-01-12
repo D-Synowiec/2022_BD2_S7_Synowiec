@@ -15,7 +15,6 @@ const Media = sequelize.define('Media', {
     type: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true,
         references:{
             model: Media_Dictonary,
             key: 'id'
@@ -32,7 +31,6 @@ const Media = sequelize.define('Media', {
     backup_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true,
         references:{
             model: Backup,
             key: 'id'

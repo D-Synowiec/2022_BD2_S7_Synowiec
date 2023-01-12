@@ -9,7 +9,6 @@ const Gallery_Access = sequelize.define('Gallery_Access', {
     user: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true,
         References:{
             model: Users,
             key: 'id'
@@ -18,7 +17,6 @@ const Gallery_Access = sequelize.define('Gallery_Access', {
     gallery: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: true,
         References:{
             model: Gallery,
             key: 'id'
