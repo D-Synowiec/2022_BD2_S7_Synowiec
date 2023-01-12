@@ -5,19 +5,19 @@ require('dotenv').config()
 const sequelize = new Sequelize(process.env.PGLINK);
 
 
-const x = sequelize.define('Gallery', {
+const x = sequelize.define('Backup', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    gallery_owner: {
+    gallery: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         references:{
-            model: Users,
+            model: gallery,
             key: 'id'
         }
     }

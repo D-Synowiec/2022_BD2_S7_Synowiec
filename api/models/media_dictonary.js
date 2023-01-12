@@ -5,22 +5,21 @@ require('dotenv').config()
 const sequelize = new Sequelize(process.env.PGLINK);
 
 
-const x = sequelize.define('Gallery', {
+const x = sequelize.define('Media_Dictonary', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    gallery_owner: {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    size: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
-        references:{
-            model: Users,
-            key: 'id'
-        }
-    }
+        allowNull: false
+    },
 
 }, {
     timestamps: false
