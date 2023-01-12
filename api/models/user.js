@@ -42,7 +42,7 @@ const User = sequelize.define('User', {
 
 }, {
     timestamps: false
-})
+});
 
 
 async function test() {
