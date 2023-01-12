@@ -45,12 +45,5 @@ const User = sequelize.define('User', {
 });
 
 
-async function test() {
-    try {
-      const users = await User.findAll()
-        console.log("All users:", JSON.stringify(users, null, 2));
-    } catch (e) {
-        console.error(e);
-    }
-}
-test();
+
+module.export = User;
