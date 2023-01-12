@@ -5,21 +5,25 @@ require('dotenv').config()
 const sequelize = new Sequelize(process.env.PGLINK);
 
 
-const Media_Dictonary = sequelize.define('Media_Dictonary', {
-    id: {
+const Gallery_Access = sequelize.define('Gallery_Access', {
+    user: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true
+        References:{
+            model: Users,
+            key: 'id'
+        }
     },
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    size: {
+    gallery: {
         type: DataTypes.INTEGER,
-        allowNull: false
-    },
+        allowNull: false,
+        autoIncrement: true,
+        References:{
+            model: Gallery,
+            key: 'id'
+        }
+    }
 
 }, {
     timestamps: false
@@ -28,7 +32,7 @@ const Media_Dictonary = sequelize.define('Media_Dictonary', {
 
 async function test() {
     try {
-      const users = await Media_Dictonary.findAll()
+      const users = await Gallery_Access.findAll()
         console.log("All users:", JSON.stringify(users, null, 2));
     } catch (e) {
         console.error(e);

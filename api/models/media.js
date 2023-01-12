@@ -5,7 +5,7 @@ require('dotenv').config()
 const sequelize = new Sequelize(process.env.PGLINK);
 
 
-const x = sequelize.define('Media', {
+const Media = sequelize.define('Media', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -46,7 +46,7 @@ const x = sequelize.define('Media', {
 
 async function test() {
     try {
-      const users = await User.findAll()
+      const users = await Media.findAll()
         console.log("All users:", JSON.stringify(users, null, 2));
     } catch (e) {
         console.error(e);

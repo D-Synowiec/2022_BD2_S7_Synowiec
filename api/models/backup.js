@@ -5,7 +5,7 @@ require('dotenv').config()
 const sequelize = new Sequelize(process.env.PGLINK);
 
 
-const x = sequelize.define('Backup', {
+const Backup = sequelize.define('Backup', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -29,7 +29,7 @@ const x = sequelize.define('Backup', {
 
 async function test() {
     try {
-      const users = await User.findAll()
+      const users = await Backup.findAll()
         console.log("All users:", JSON.stringify(users, null, 2));
     } catch (e) {
         console.error(e);
