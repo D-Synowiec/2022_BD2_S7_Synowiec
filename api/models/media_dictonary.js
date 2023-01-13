@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
-require('dotenv').config()
-
 
 const sequelize = new Sequelize(process.env.PGLINK);
-
 
 const Media_Dictonary = sequelize.define('Media_Dictonary', {
     id: {
@@ -25,6 +22,5 @@ const Media_Dictonary = sequelize.define('Media_Dictonary', {
     timestamps: false,
     freezeTableName: true
 });
-
 
 module.export = Media_Dictonary;

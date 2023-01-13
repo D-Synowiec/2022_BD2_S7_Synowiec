@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-
-
 const sequelize = new Sequelize(process.env.PGLINK);
-
 
 const Photo = sequelize.define('Photo', {
     id: {

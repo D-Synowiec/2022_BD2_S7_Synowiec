@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-
-
 const sequelize = new Sequelize(process.env.PGLINK);
-
 
 const Gallery_Access = sequelize.define('Gallery_Access', {
     user: {
@@ -19,6 +16,5 @@ const Gallery_Access = sequelize.define('Gallery_Access', {
     timestamps: false,
     freezeTableName: true
 });
-
 
 module.export = Gallery_Access;

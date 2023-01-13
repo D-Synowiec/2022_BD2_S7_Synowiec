@@ -2,7 +2,6 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const sequelize = new Sequelize(process.env.PGLINK);
 
-
 const Role = sequelize.define('Role', {
     id: {
         type: DataTypes.INTEGER,

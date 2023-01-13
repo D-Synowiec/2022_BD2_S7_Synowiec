@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
-require('dotenv').config()
-const User = require('./user')
 
 const sequelize = new Sequelize(process.env.PGLINK);
-
 
 const Gallery = sequelize.define('Gallery', {
     id: {

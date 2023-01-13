@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
-require('dotenv').config()
-
 
 const sequelize = new Sequelize(process.env.PGLINK);
-
 
 const User = sequelize.define('User', {
     id: {
@@ -43,7 +40,5 @@ const User = sequelize.define('User', {
 }, {
     timestamps: false
 });
-
-
 
 module.export = User;
