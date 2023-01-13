@@ -12,10 +12,10 @@ module.exports = (sequelize) => {
     },
     type: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
     },
     creation_date: {
-        type: DataTypes.DATA,
+        type: DataTypes.DATE,
         allowNull: false
     },
     is_av: {
@@ -24,8 +24,8 @@ module.exports = (sequelize) => {
     },
     backup_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-    },
+        allowNull: false
+    }
 
 }, {
     timestamps: false,
