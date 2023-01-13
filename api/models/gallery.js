@@ -27,4 +27,4 @@ const Gallery = sequelize.define('Gallery', {
 });
 
 
-module.exports = Gallery;
+module.export = Gallery;

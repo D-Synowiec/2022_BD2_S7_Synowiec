@@ -19,4 +19,4 @@ const Tag = sequelize.define('Tag', {
     timestamps: false
 });
 
-module.exports = Tag;
+module.export = Tag;

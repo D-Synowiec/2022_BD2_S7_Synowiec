@@ -21,4 +21,4 @@ const Gallery_Access = sequelize.define('Gallery_Access', {
 });
 
 
-module.exports = Gallery_Access;
+module.export = Gallery_Access;

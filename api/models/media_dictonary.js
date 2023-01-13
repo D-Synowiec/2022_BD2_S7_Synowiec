@@ -27,4 +27,4 @@ const Media_Dictonary = sequelize.define('Media_Dictonary', {
 });
 
 
-module.exports = Media_Dictonary;
+module.export = Media_Dictonary;

@@ -34,4 +34,4 @@ const Media = sequelize.define('Media', {
 });
 
 
-module.exports = Media;
+module.export = Media;

@@ -19,4 +19,4 @@ const Backup = sequelize.define('Backup', {
     timestamps: false
 });
 
-module.exports = Backup;
+module.export = Backup;

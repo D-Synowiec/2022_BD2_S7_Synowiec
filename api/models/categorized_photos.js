@@ -19,4 +19,4 @@ const Categorized_Photo = sequelize.define('Categorized_Photo', {
     timestamps: false
 });
 
-module.exports = Categorized_Photo;
+module.export = Categorized_Photo;

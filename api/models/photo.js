@@ -46,4 +46,4 @@ const Photo = sequelize.define('Photo', {
     timestamps: false
 });
 
-module.exports = Photo;
+module.export = Photo;
