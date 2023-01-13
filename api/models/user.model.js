@@ -1,8 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize(process.env.PGLINK);
 
-const User = sequelize.define('User', {
+module.exports = (sequelize) => {
+    sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -41,4 +41,4 @@ const User = sequelize.define('User', {
     timestamps: false
 });
 
-module.export = User;
+}

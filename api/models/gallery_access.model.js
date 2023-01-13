@@ -1,8 +1,9 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize(process.env.PGLINK);
 
-const Gallery_Access = sequelize.define('Gallery_Access', {
+
+module.exports = (sequelize) => { 
+    sequelize.define('Gallery_Access', {
     user: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -17,4 +18,4 @@ const Gallery_Access = sequelize.define('Gallery_Access', {
     freezeTableName: true
 });
 
-module.export = Gallery_Access;
+}

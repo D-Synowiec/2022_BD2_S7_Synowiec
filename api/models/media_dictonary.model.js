@@ -1,8 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize(process.env.PGLINK);
 
-const Media_Dictonary = sequelize.define('Media_Dictonary', {
+module.exports = (sequelize) => { 
+    sequelize.define('Media_Dictonary', {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -23,4 +23,4 @@ const Media_Dictonary = sequelize.define('Media_Dictonary', {
     freezeTableName: true
 });
 
-module.export = Media_Dictonary;
+}
