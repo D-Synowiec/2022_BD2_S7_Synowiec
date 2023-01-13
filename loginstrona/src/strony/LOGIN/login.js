@@ -38,7 +38,7 @@ return (
         <label>
           Username:
           </label>
-          <input
+          <input className={styl.input}
             type="text"
             value={username}
             onChange={handleUsernameChange}
@@ -47,7 +47,7 @@ return (
         <label>
           Password:
           </label>
-          <input
+          <input className={styl.input}
             type="password"
             value={password}
             onChange={handlePasswordChange}

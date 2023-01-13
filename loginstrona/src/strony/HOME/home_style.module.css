@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
 
 body{
     margin:0;
 }
 
 .moj_div{
-    background-color: aqua;
+    background-color: rgb(192, 193, 196);
     width: 100vw;
     height: 100vh;
     /* position: absolute; */
@@ -14,7 +14,7 @@ body{
 }
 
 .user_pass{
-    background-color: pink;
+    /* background-color: pink; */
     /*
     width: 250px;
     height: 200px;
@@ -31,12 +31,12 @@ body{
     padding: 20px;
     gap: 10px;
 
-    font-family: 'Noto Sans', sans-serif;
+    /* font-family: 'Noto Sans', sans-serif; */
     
 }
 
 .user_pass > button{
-    font-family: 'Noto Sans', sans-serif;
+    /* font-family: 'Noto Sans', sans-serif; */
 }
 
 .foto{

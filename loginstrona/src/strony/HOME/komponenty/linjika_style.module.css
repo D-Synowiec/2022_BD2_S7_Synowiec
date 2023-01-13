@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
 
 .styl_linjiki{
-    background-color: pink;
+    /* background-color: pink; */
     /*
     width: 250px;
     height: 200px;
@@ -13,7 +13,7 @@
     justify-content: space-around;
     justify-items:center;
 
-    font-family: 'Noto Sans', sans-serif;
+    /* font-family: 'Noto Sans', sans-serif; */
     
     width: 100%;
     border:0.5px solid black;
@@ -24,7 +24,7 @@
 }
 
 .styl_linjiki:nth-child(odd){
-    background-color: rgb(255, 192, 245);
+    background-color: rgb(211, 211, 211);
 }
 
 
@@ -37,23 +37,24 @@
 }
 
 .styl_tekst1{
-    font-family: 'Noto Sans', sans-serif;
+    /* font-family: 'Nsoto Sans', sans-serif; */
     font-size: 1.5rem;
     width: 17%;
     overflow: hidden;
 }
 
 .styl_przycisk{
-    background-color: white;
+    /* background-color: white; */
     width: 75px;
     height: 25px;
     border-radius: 5px;
     /* overflow: hidden; */
     box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
+    font-size: 0.75rem;
 }
 
 .styl_przycisk:hover{
-    background-color: rgb(177, 177, 177);
+    /* background-color: rgb(177, 177, 177); */
 }
 
 .styl_przycisk:active{
@@ -65,7 +66,7 @@
 .styl_paska{
     width:0.5px;
     height: 120px; /*uwaga na errory tutaj */
-    background-color: black;
+    /* background-color: black; */
 }
 
 /* .styl_linjiki>*{flex-grow: 0; flex-shrink: 0;} */
