@@ -31,7 +31,7 @@ function Home_strona(){
     {miniaturka: zdj2, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"}
   ])
   
-  const rysunek_linjiki = dane_l.map((element)=>{
+  const rysunek_linjiki = dane_l.map((element,index)=>{
     return(
       <Linjika 
       miniaturka={element.miniaturka} 
@@ -39,6 +39,7 @@ function Home_strona(){
       data={element.data}
       rozmiar={element.rozmiar}
       autor={element.autor}
+      klucz={index}
       />
     )
   })

@@ -90,10 +90,12 @@ function gallery_strona(){
       })  
 
     return(
+      <div className={styl.moj_div2}>
         <div className={styl.moj_div}>
             <p className={styl.g_tekst}>GALERIA</p>
                 {jeden_obrazek} 
         </div>
+      </div>
     )
 
 }

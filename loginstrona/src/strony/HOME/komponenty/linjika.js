@@ -1,8 +1,11 @@
 import React,{useEffect,useState} from "react";
 import styl from "./linjika_style.module.css";
 import zdj from "../../../pliki/popo.jpg";
+import { useNavigate } from "react-router";
 
 function linjika(props){
+
+    const navigate=useNavigate();
 
     return(
         <div className={styl.styl_linjiki}>
@@ -17,7 +20,11 @@ function linjika(props){
             
             <p className={styl.styl_tekst1}>{props.autor}</p>
             
-            <button className={styl.styl_przycisk}>Wejdź</button>
+            <button className={styl.styl_przycisk} 
+            onClick={() => {
+            navigate(`/gallery/${props.klucz}`)
+            }}>Wejdź 
+            </button>
             {/* <div className={styl.styl_paska}/> */}
         </div>
     )
