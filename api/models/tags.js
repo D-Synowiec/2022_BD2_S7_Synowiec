@@ -19,13 +19,4 @@ const Tag = sequelize.define('Tag', {
     timestamps: false
 });
 
-// Default query with id
-async function test() {
-    try {
-      const users = await Tag.findAll()
-        console.log("All users:", JSON.stringify(users, null, 2));
-    } catch (e) {
-        console.error(e);
-    }
-}
-test();
+module.exports = Tag;

@@ -22,16 +22,9 @@ const Media_Dictonary = sequelize.define('Media_Dictonary', {
     },
 
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
 
-async function test() {
-    try {
-      const users = await Media_Dictonary.findAll()
-        console.log("All users:", JSON.stringify(users, null, 2));
-    } catch (e) {
-        console.error(e);
-    }
-}
-test();
+module.exports = Media_Dictonary;

@@ -15,10 +15,10 @@ const Gallery = sequelize.define('Gallery', {
     gallery_owner: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references:{
-            model: User,
-            key: 'id'
-        }
+    },
+    name: {
+        type: DataTypes.STRING(20),
+        allowNull: false
     }
 
 }, {
@@ -27,12 +27,4 @@ const Gallery = sequelize.define('Gallery', {
 });
 
 
-async function test() {
-    try {
-      const users = await Gallery.findAll()
-        console.log("All users:", JSON.stringify(users, null, 2));
-    } catch (e) {
-        console.error(e);
-    }
-}
-test();
+module.exports = Gallery;

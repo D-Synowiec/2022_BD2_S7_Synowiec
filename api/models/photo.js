@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-require('dotenv').config()
+
 
 
 const sequelize = new Sequelize(process.env.PGLINK);
@@ -12,16 +12,13 @@ const Photo = sequelize.define('Photo', {
         autoIncrement: true,
         primaryKey: true
     },
+    // I am not so sure about that field, need to reconsider that
     owner: {
         type: DataTypes.STRING,
         allowNull: false
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(32),
         allowNull: false
     },
     size: {
@@ -29,11 +26,11 @@ const Photo = sequelize.define('Photo', {
         allowNull: false
     },
     resolution: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         allowNull: false
     },
     extension: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(5),
         allowNull: false
     },
     galleries: {
@@ -49,13 +46,4 @@ const Photo = sequelize.define('Photo', {
     timestamps: false
 });
 
-
-async function test() {
-    try {
-      const users = await Photo.findAll()
-        console.log("All users:", JSON.stringify(users, null, 2));
-    } catch (e) {
-        console.error(e);
-    }
-}
-test();
+module.exports = Photo;

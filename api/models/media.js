@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require('sequelize');
-require('dotenv').config()
 
 
 const sequelize = new Sequelize(process.env.PGLINK);
@@ -15,10 +14,6 @@ const Media = sequelize.define('Media', {
     type: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references:{
-            model: Media_Dictonary,
-            key: 'id'
-        }
     },
     creation_date: {
         type: DataTypes.DATA,
@@ -31,23 +26,12 @@ const Media = sequelize.define('Media', {
     backup_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references:{
-            model: Backup,
-            key: 'id'
-        }
     },
 
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
 
-async function test() {
-    try {
-      const users = await Media.findAll()
-        console.log("All users:", JSON.stringify(users, null, 2));
-    } catch (e) {
-        console.error(e);
-    }
-}
-test();
+module.exports = Media;

@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-require('dotenv').config()
+
 
 
 const sequelize = new Sequelize(process.env.PGLINK);
@@ -9,31 +9,16 @@ const Gallery_Access = sequelize.define('Gallery_Access', {
     user: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        References:{
-            model: Users,
-            key: 'id'
-        }
     },
     gallery: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        References:{
-            model: Gallery,
-            key: 'id'
-        }
     }
 
 }, {
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 
 
-async function test() {
-    try {
-      const users = await Gallery_Access.findAll()
-        console.log("All users:", JSON.stringify(users, null, 2));
-    } catch (e) {
-        console.error(e);
-    }
-}
-test();
+module.exports = Gallery_Access;
