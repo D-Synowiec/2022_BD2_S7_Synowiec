@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from "react";
 import styl from "./login_style.module.css";
 import zdj from "../../pliki/popo.jpg";
+import user_pic from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 
 function Login_strona(){
@@ -34,7 +35,7 @@ function Login_strona(){
 return (
     <div className={styl.moj_div}>
       <form className={styl.user_pass} onSubmit={handleSubmit}>
-        <img className={styl.foto} src={zdj}/>
+        <img className={styl.foto} src={user_pic}/>
         <label>
           Username:
           </label>
