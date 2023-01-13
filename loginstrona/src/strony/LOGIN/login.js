@@ -54,7 +54,7 @@ return (
             onChange={handlePasswordChange}
           />
         
-        <button type="submit">Login</button>
+        <button className={styl.styl_przyc} type="submit">Login</button>
       </form>
     </div>
     

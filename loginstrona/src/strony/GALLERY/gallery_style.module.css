@@ -1,0 +1,14 @@
+.moj_div{
+    background-color: rgb(47, 49, 59);
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.g_tekst{
+    color: rgb(224, 219, 211);
+    font-size: 7rem;
+    text-align: center;
+}
+
