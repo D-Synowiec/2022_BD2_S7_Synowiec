@@ -42,6 +42,7 @@ function Login_strona(){
           przekierunkowanie('/HOME');
         }else{
           console.log("niepoprawne hasło");
+          przekierunkowanie('/incorrect_login');
         }
       }
       )
