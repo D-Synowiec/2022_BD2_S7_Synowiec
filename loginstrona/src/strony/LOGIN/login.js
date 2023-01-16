@@ -3,6 +3,8 @@ import styl from "./login_style.module.css";
 import zdj from "../../pliki/popo.jpg";
 import user_pic from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
+import bcrypt from 'bcryptjs';
+
 
 function Login_strona(){
 
@@ -19,14 +21,30 @@ function Login_strona(){
   
     let przekierunkowanie = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       
       //przekierunkowanie("/https://www.twitch.tv/popo");
       //window.location.href="https://www.twitch.tv/popo";
       //window.location.href="http://localhost:3000/home"
-      przekierunkowanie('/HOME');
+      
 
       event.preventDefault();
+
+      const DBPassword = await bcrypt.hash("admin", 10);
+      console.log(DBPassword);//tu bedzie hasło z db zabiast tego nie
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      console.log(hashedPassword);
+      bcrypt.compare(password, DBPassword, (err,isMatch)=> {
+        if(isMatch)
+        {
+          console.log("poprawne hasło");
+          przekierunkowanie('/HOME');
+        }else{
+          console.log("niepoprawne hasło");
+        }
+      }
+      )
 
       // validate the form values
       // call a login function

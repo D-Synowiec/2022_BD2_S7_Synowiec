@@ -34,12 +34,13 @@ function Home_strona(){
   const rysunek_linjiki = dane_l.map((element,index)=>{
     return(
       <Linjika 
+      key={index}
+      klucz={index}
       miniaturka={element.miniaturka} 
       tytul={element.tytul}
       data={element.data}
       rozmiar={element.rozmiar}
       autor={element.autor}
-      klucz={index}
       />
     )
   })
