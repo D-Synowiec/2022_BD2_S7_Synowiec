@@ -4,7 +4,7 @@ import Bad_login_strona from "./strony/LOGIN/bad_login.js";
 import Logout_strona from "./strony/LOGIN/logout.js";
 import Home_strona from "./strony/HOME/home.js";
 import Gallery_strona from "./strony/GALLERY/gallery.js";
-import Bar from "./strony/HOME/komponenty/NavBar.js";
+import Bar from "./komponenty/NavBar.js";
 
 function App() {
   return (
