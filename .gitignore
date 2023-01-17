@@ -145,4 +145,6 @@ dist
 backup/
 
 .help_links
+old_models/
+gen_models/
 # End of https://www.toptal.com/developers/gitignore/api/node

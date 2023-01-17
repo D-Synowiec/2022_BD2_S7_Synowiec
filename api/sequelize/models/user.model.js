@@ -29,10 +29,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(320),
         allowNull: false,
     },
-    role: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     tokens: {
         type: DataTypes.ARRAY(DataTypes.STRING)
     }

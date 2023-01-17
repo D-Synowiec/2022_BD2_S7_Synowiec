@@ -12,12 +12,7 @@ module.exports = (sequelize) => {
     name: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    parent_category: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
     }
-
 }, {
     timestamps: false
 });

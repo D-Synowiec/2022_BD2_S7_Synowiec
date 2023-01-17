@@ -4,12 +4,12 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => { 
     sequelize.define('Categorized_Photo', {
-    photo: {
+    photoId: {
         type: DataTypes.INTEGER,
         allowNull: false,
 
     },
-    category: {
+    categoryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
 
