@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { models } = require('../sequelize');
-
+const auth = require('./middleware/auth')
+const jwt = require('jsonwebtoken');
 const app = express();
 
 app.use(express.json())
@@ -37,7 +38,6 @@ app.post('/api/user', async (req, res) => {
             }
         
         });
-        console.log(existsUser);
         if (existsUser) return res.status(201).send({
             res: "Account with that email, already exsists."
         });
@@ -45,11 +45,49 @@ app.post('/api/user', async (req, res) => {
         res.status(200).send();
     } catch(e) {
         res.status(500).send(e);
+    }    
+});
+
+app.get('/api/user/me', auth, async (req, res) => {
+    res.send(req.user);
+
+
+});
+app.post('/api/user/login', async (req, res) => {
+    //TODO: Make function (on model please) to find it
+    try {
+        const user = await models.User.findOne({
+            where: {
+                login: req.body.login,
+                password_hash: req.body.password
+            }
+        });
+        if(!user) {
+            return res.status(203).send({
+                "message": "Bad login or password"
+            });
+        }
+        const token = jwt.sign({
+            id: user.id
+        }, process.env.JWT);
+        console.log(user.tokens);
+        await user.update({
+            tokens: user.tokens.concat(token)
+        });
+        return res.status(202).send({
+            "tokens": token
+        });
+
+    } catch (error) {
+        res.status(500).send({
+            "error": error
+        })
     }
 
+});
 
-    // Check if user exsists
-    
+app.get('/api/user/:id', async (req, res) => {
+
 });
 
 module.exports = app;
