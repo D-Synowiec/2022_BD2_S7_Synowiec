@@ -21,19 +21,9 @@ async function checkDatabaseConnection() {
 async function init() {
     await checkDatabaseConnection();
 
-//    const categories = await sequelize.models.Category.findAll();
-//    console.log(categories);
-
-   const roles = await sequelize.models.Media.findOne({
-        where: {
-            id: 1
-        },
-        include: {
-            model: sequelize.models.Media_Dictonary,
-            as: 'type_Media_Dictonary'
-        }
-    });
-   console.log(roles.type_Media_Dictonary.name);
+    app.listen(PORT, () => {
+        console.log(`API is working on port ${PORT}!`);
+    })
     
 }
 
