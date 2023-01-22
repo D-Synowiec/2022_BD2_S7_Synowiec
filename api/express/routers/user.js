@@ -83,8 +83,19 @@ router.post('/api/user/logout', auth, async (req, res) => {
     }
 });
 
-
-// Patch user
+// Patch user TODO: Validate received information
+router.patch('/api/user/me', auth, async (req, res) => {
+    try {
+        await models.User.update(req.body, {
+            where: {
+                id: req.user.id
+            }
+        });
+        res.send();
+    } catch (e) {
+        res.status(500).send();
+    }
+})
 
 // Delete user
 router.delete('/api/user', auth, async (req, res) => {
