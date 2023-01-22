@@ -87,6 +87,13 @@ router.post('/api/user/logout', auth, async (req, res) => {
 // Patch user
 
 // Delete user
+router.delete('/api/user', auth, async (req, res) => {
+    try {
+        await req.user.destroy();
+        res.send();
+    } catch (e) {
+        res.send(e);
+    }
+})
 
 module.exports = router;
-
