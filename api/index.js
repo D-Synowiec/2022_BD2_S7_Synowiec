@@ -23,7 +23,7 @@ async function init() {
 
     app.listen(PORT, () => {
         console.log(`API is working on port ${PORT}!`);
-    })
+    });
     
 }
 

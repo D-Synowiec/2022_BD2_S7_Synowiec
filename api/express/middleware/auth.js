@@ -6,16 +6,16 @@ const auth = async (req, res, next) => {
     try {
         const token = req.header('Authorization').replace('Bearer ', '');
         const decoded = jwt.verify(token, process.env.JWT);
-    
         const user = await models.User.findOne({
             where: {
-                id: decoded.id,
-                // #TODO: How to read array?
+              id: decoded.id,
+              tokens: token
             }    
-        });
+          }); 
+
         if(!user) throw new Error();
 
-       // req.token = token;
+       req.token = token;
        req.user = user;
        next();
 

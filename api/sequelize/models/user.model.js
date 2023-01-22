@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     tokens: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
+        type: DataTypes.STRING(400),
     }
 
 }, {
