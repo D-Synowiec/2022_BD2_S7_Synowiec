@@ -8,7 +8,15 @@ const router = new express.Router();
 
 // Register
 router.post('/api/user', async (req, res) => {
-    const newUser = models.User.build(req.body);
+    const role = await models.Role.findOne({
+        where: {
+            role_name: 'Basic_User'
+        }
+    })
+    const newUser = models.User.build({
+        ...req.body,
+        RoleId: role.id
+    });
     try {
         const existsUser = await models.User.findOne({
             where: {
@@ -39,7 +47,7 @@ router.post('/api/user/login', async (req, res) => {
     try {
         const user = await models.User.findOne({
             where: {
-                login: req.body.login,
+                email: req.body.email,
                 password_hash: req.body.password
             }
         });
