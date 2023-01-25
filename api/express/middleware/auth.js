@@ -17,6 +17,8 @@ const auth = async (req, res, next) => {
 
        req.token = token;
        req.user = user;
+       res.header("Access-Control-Allow-Origin", "*");
+       res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
        next();
 
     } catch (error) {
