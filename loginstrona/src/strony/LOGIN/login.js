@@ -4,6 +4,7 @@ import zdj from "../../pliki/popo.jpg";
 import user_pic from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import bcrypt from 'bcryptjs';
+import Popup from 'reactjs-popup';
 
 
 function Login_strona(){
@@ -75,6 +76,34 @@ return (
         
         <button className={styl.styl_przyc} type="submit">Login</button>
       </form>
+
+      <Popup trigger={<button style={{ backgroundColor: "rgba(255, 255, 255, 0.6)", position: 'fixed', left: 4, bottom: 4 }}>Pomoc</button>} position="right">
+        <div style={{color: "white", position: 'fixed', left: 100, bottom: 4 }}>
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+          By się zalogować wpisz login i hasło
+        
+        </div>
+      </Popup>
+
     </div>
     
     );
