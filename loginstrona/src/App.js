@@ -9,7 +9,6 @@ import Bar from "./komponenty/NavBar.js";
 function App() {
   return (
     <>
-    <Bar/>
     <Routes>
       <Route path="/login" element={<Login_strona/>}/>
       <Route path="/incorrect_login" element={<Bad_login_strona/>}/>
