@@ -5,13 +5,16 @@ import user_pic from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import bcrypt from 'bcryptjs';
 import Popup from 'reactjs-popup';
-
+import Cookies from 'js-cookie';
 
 function Login_strona(){
 
+    const API = 'http://localhost:5000/api/user/login';
+
     const [username, setUsername] = useState('admin'/*zostaw puste potem*/);
     const [password, setPassword] = useState('admin'/*zostaw puste potem*/);
-  
+
+
     const handleUsernameChange = (event) => {
       setUsername(event.target.value);
     }
@@ -30,6 +33,23 @@ function Login_strona(){
       
 
       event.preventDefault();
+
+      const response = await fetch(API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+        email: username,
+        password: password
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+
+      const token = data.tokens;
+      Cookies.set("Ciastko", token, {expires: 30});
+      console.log(Cookies.get("Ciastko"));
 
       const DBPassword = await bcrypt.hash("admin", 10);
       console.log(DBPassword);//tu bedzie hasło z db zabiast tego nie
@@ -77,7 +97,7 @@ return (
         <button className={styl.styl_przyc} type="submit">Login</button>
       </form>
 
-      <Popup trigger={<button style={{ backgroundColor: "rgba(255, 255, 255, 0.6)", position: 'fixed', left: 4, bottom: 4 }}>Pomoc</button>} position="right">
+      <Popup trigger={<button style={{ backgroundColor: "rgba(255, 255, 255, 0.6)", position: 'fixed', left: 4, bottom: 4 }}>?</button>} position="right">
         <div style={{color: "white", position: 'fixed', left: 100, bottom: 4 }}>
           By się zalogować wpisz login i hasło
           By się zalogować wpisz login i hasło
