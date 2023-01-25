@@ -1,5 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,
+   optionSuccessStatus:200,
+}
+
+ // Use this after the variable declaration
 
 const { models } = require('../sequelize');
 const userRouter = require('./routers/user');
@@ -8,12 +16,7 @@ const app = express();
 
 // Enable JSON
 app.use(express.json());
-
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
- })
+app.use(cors(corsOptions));
 
 // Routers
 app.use(userRouter);
