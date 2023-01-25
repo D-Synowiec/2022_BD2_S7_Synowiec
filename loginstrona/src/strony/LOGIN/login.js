@@ -97,30 +97,9 @@ return (
         <button className={styl.styl_przyc} type="submit">Login</button>
       </form>
 
-      <Popup trigger={<button style={{ backgroundColor: "rgba(255, 255, 255, 0.6)", position: 'fixed', left: 4, bottom: 4 }}>?</button>} position="right">
-        <div style={{color: "white", position: 'fixed', left: 100, bottom: 4 }}>
+      <Popup trigger={<button style={{ backgroundColor: "rgba(255, 255, 255, 0.6)", marginLeft: 5, marginTop: 5}}>?</button>} position="right center">
+        <div style={{color: "white", backgroundColor: 'green', borderRadius: '10px', padding: '5px', marginLeft: 5}}>
           By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-          By się zalogować wpisz login i hasło
-        
         </div>
       </Popup>
 

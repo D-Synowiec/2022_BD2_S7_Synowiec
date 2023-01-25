@@ -18,6 +18,9 @@
     padding: 6px;
     text-align: center;
     text-decoration: none;
+    background-color: rgb(47, 49, 59);
+    color: rgb(228, 222, 222);
+    margin-right: 5px;
 }
 
 .navbar button:hover{

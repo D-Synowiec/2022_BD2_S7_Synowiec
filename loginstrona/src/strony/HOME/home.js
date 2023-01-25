@@ -5,6 +5,7 @@ import zdj2 from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import Linjika from "./komponenty/linjika"
 import Gora from "./komponenty/gora_linjika"
+import Bar from "../../komponenty/NavBar.js";
 
 function Home_strona(){
 
@@ -47,6 +48,7 @@ function Home_strona(){
 
 return (
     <div className={styl.moj_div}>
+      <Bar/>
       <Gora/>
       {rysunek_linjiki}
     </div>
