@@ -3,7 +3,7 @@ import styl from "./linjika_style.module.css";
 import zdj from "../../../pliki/popo.jpg";
 import { useNavigate } from "react-router";
 
-function linjika(props){
+function Linjika(props){
 
     const navigate=useNavigate();
 
@@ -30,4 +30,4 @@ function linjika(props){
     )
 }
 
-export default linjika
+export default Linjika

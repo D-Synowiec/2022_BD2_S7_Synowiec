@@ -5,7 +5,7 @@ import zdj2 from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import Fotka from "./komponenty/picture.js"
 
-function gallery_strona(){
+function Gallery_strona(){
 
     const [dane_l,set_dane_l] = useState([
         {obrazek: zdj,},
@@ -100,4 +100,4 @@ function gallery_strona(){
 
 }
 
-export default gallery_strona;
+export default Gallery_strona;
