@@ -9,7 +9,7 @@ const NavBar = () => {
 
     async function handleClick1() {
 
-        navigate("/home");
+        navigate("/settings");
     }
     async function handleClick2() {
         const response = await fetch(API, {
@@ -30,7 +30,7 @@ const NavBar = () => {
             <Link to="/home">Strona Główna</Link>
             <Link to="/galleries">Galerie</Link>
             <Link to="/categories">Kategorie</Link>
-            <Link to="/gallery">Zdjęcia</Link>
+            <Link to="/search-photo">Zdjęcia</Link>
             <div className='links'>
                 <button onClick={handleClick1}>Ustawienia</button>
                 <button onClick={handleClick2}>Wyloguj</button>

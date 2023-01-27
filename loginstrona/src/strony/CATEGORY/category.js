@@ -91,10 +91,10 @@ function Category_strona(){
       })  
 
     return(
-      <div className='moj_div2'>
-        <Bar/>
-        <div className='moj_div'>
-            <p className='g_tekst'>ZDJĘCIA</p>
+      <div className='stronaKategoria'>
+        <Bar/>      
+        <div className='zdjecie'>
+            <p className='g_tekst'>KATEGORIA</p>
                 {jeden_obrazek} 
         </div>
       </div>

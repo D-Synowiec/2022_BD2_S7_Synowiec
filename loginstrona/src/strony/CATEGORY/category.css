@@ -1,5 +1,9 @@
-.moj_div{
+body{
     background-color: rgb(47, 49, 59);
+}
+
+.zdjecie{
+    /* background-color: rgb(47, 49, 59); */
     width: 100vw;
     height: auto;
     justify-content: space-evenly;
@@ -12,11 +16,10 @@
     text-align: center;
 }
 
-.moj_div2{
+.stronaKategoria{
     /* głupie ale działa */
     background-color: rgb(47, 49, 59);
     width: 100vw;
-    height: 100vh;
     justify-content: space-evenly;
     text-align: center;
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom";
 import Bar from "../../komponenty/NavBar.js";
 import './home.css';
 

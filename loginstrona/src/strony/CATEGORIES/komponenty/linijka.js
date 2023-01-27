@@ -13,7 +13,7 @@ function Linijka(props){
             
             <button className='styl_przycisk'
                 onClick={() => {
-                    navigate(`/categories/${props.klucz}`)
+                    navigate(`/category/${props.klucz}`)
                 }}>Wejdź 
             </button>
         </div>

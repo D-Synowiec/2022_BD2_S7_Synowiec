@@ -1,47 +1,46 @@
 import React,{useEffect,useState} from "react";
 import styl from "./galleries_style.module.css";
-import zdj from "../../pliki/popo.jpg";
-import zdj2 from "../../pliki/user_pic.png";
+import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import Linjika from "./komponenty/linijka"
 import Gora from "./komponenty/gorna_linijka"
 import Bar from "../../komponenty/NavBar.js";
 
-function Home_strona(){
-
+function Galeria_strona(){
+  const API = 'http://127.0.0.1:5000/api/gallery/me';
   let przekierunkowanie = useNavigate();
 
     const handleSubmit = (event) => {
-      //przekierunkowanie("/https://www.twitch.tv/popo");
-      //window.location.href="https://www.twitch.tv/popo";
-      //window.location.href="http://localhost:3000/login"
       przekierunkowanie('/LOGIN');
       event.preventDefault();
-
-      // validate the form values
-      // call a login function
     }
 
-  const [dane_l,set_dane_l] = useState([
-    {miniaturka: "miniaturka", tytul: "nazwa", data:"data", rozmiar:"rozmiar", autor:"autor"},
-    {miniaturka: zdj, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
-    {miniaturka: zdj2, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
-    {miniaturka: zdj, tytul: "popo", data:"06.01.2023", rozmiar:"20MB", autor:"SuchySuchar"},
-    {miniaturka: zdj2, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
-    {miniaturka: zdj, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"},
-    {miniaturka: zdj2, tytul: "tytul", data:"data", rozmiar:"0MB", autor:"autor"}
-  ])
-  
+    async function fetchData(API) {
+        const response = await fetch(API, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `${Cookies.get("Ciastko")}`
+            },
+          });
+          const data = await response.json();
+          console.log(data);
+          return data;
+    }
+
+  const data = fetchData(API);
+  const [dane_l,set_dane_l] = useState([data]);
+
   const rysunek_linjiki = dane_l.map((element,index)=>{
     return(
       <Linjika 
       key={index}
       klucz={index}
-      miniaturka={element.miniaturka} 
-      tytul={element.tytul}
-      data={element.data}
-      rozmiar={element.rozmiar}
-      autor={element.autor}
+      // miniaturka={element.miniaturka}
+      name={element.name}
+      // data={element.data}
+      // rozmiar={element.rozmiar}
+      // autor={element.autor}
       />
     )
   })
@@ -56,4 +55,4 @@ return (
     );
 }
 
-export default Home_strona
+export default Galeria_strona

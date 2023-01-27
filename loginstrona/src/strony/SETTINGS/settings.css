@@ -2,19 +2,19 @@ body{
     background-color: rgb(192, 193, 196);
 }
 
-.homeStrona .tekst{
+.settingsStrona .tekst{
     padding: 10px;
     margin-top: 40px;
     text-align: center;
 }
 
-.homeStrona .tekst .naglowek{
+.settingsStrona .tekst .naglowek{
     font-size: 4rem;
     color: black;
     margin-bottom: 60px;
 }
 
-.homeStrona .tekst .opis{
+.settingsStrona .tekst .opis{
     text-align: left;
     margin-left:20%;
     margin-right: 20%;

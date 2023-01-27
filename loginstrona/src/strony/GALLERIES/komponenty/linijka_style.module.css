@@ -21,6 +21,7 @@
     table-layout: fixed;
 
     padding: 2px;
+    margin-bottom: 10px;
 }
 
 .styl_linjiki:nth-child(odd){
