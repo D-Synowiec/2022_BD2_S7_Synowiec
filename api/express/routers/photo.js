@@ -28,7 +28,7 @@ router.post('/api/photo/add', auth, upload.single('photo_file'), async (req, res
 });
 
 // Get photo minature by id
-router.get('/api/image/:id', auth, async (req, res) => {
+router.get('/api/image/miniature/:id', auth, async (req, res) => {
     try {
         const image = await models.Photo.findByPk(req.params.id, {
             include: {
@@ -40,7 +40,7 @@ router.get('/api/image/:id', auth, async (req, res) => {
         if (!image || image.Gallery.gallery_owner !== req.user.id) return res.status(404).send({error: 'Image not found :('});
         // Resize photo
         const compressedImage = await sharp(image.photo_file)
-            .resize(800, 800)
+            .resize(300, 300)
             .toBuffer();
 
         res.contentType('image/jpeg');
@@ -51,10 +51,27 @@ router.get('/api/image/:id', auth, async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-// Get all miniatures from gallery #TODO: SPlit anwser in parts
 
-// Get full size photo by id
+// Get full size photo by id TODO: checking gallery
+router.get('/api/:gid/:pid', auth, async (req, res) => {
+    try {
+        const image = await models.Photo.findByPk(req.params.pid, {
+            include: {
+                model: models.Gallery,
+                attributes: ['gallery_owner', 'id']
+            }
+        });
 
+        if (!image || image.Gallery.gallery_owner !== req.user.id || image.Gallery.id != req.params.gid) return res.status(404).send({error: 'Image not found :('});
+        const bufferImage = await sharp(image.photo_file).toBuffer();
+        res.contentType('image/jpeg');
+        res.send(bufferImage);  
+        
+
+    } catch (error) {
+        res.status(503).send(error);
+    }
+});
 
 
 

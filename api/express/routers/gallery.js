@@ -80,6 +80,21 @@ router.delete('/api/gallery/:id', auth, async (req, res) => {
         res.status(400).send();
     }
 });
-// Photos from galleries
+
+// Return metadata about photos, to get photo use photo endpoint TODO: ADD checking permisions
+router.get('/api/gallery/:gid/photos', auth, async (req,res) => {
+    try {
+        const gallery = await models.Gallery.findByPk(req.params.gid, {
+            include: {
+                model: models.Photo,
+                attributes: ['id', 'name']
+            }
+        });
+        if (!gallery) return res.status(404).send({message: "Gallery not found :("});
+        res.send(gallery);
+    } catch (error) {
+        res.status(503).send(error);
+    }
+});
 
 module.exports = router;
