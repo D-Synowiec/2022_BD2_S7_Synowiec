@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from "react";
-import styl from "./gora_linjiki_style.module.css";
+import styl from "./gorna_linijka_style.module.css";
 
 
-function gora_linjiki(){
+function gorna_linijka(){
 
     return(
         <div className={styl.styl_linjiki}>
@@ -21,4 +21,4 @@ function gora_linjiki(){
     )
 }
 
-export default gora_linjiki
+export default gorna_linijka

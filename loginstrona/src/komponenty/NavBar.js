@@ -8,16 +8,8 @@ const NavBar = () => {
     const navigate = useNavigate();
 
     async function handleClick1() {
-        const response = await fetch(API, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authentication': `Bearer ${Cookies.get("Ciastko")}`
-            }
-          });
-          const data = await response.json();
 
-        navigate("/");
+        navigate("/home");
     }
     async function handleClick2() {
         const response = await fetch(API, {
@@ -35,9 +27,9 @@ const NavBar = () => {
 
     return ( 
         <nav className='navbar'>
-            <Link to="/">Strona Główna</Link>
-            <Link to="/home">Galerie</Link>
-            <Link to="/">Kategorie</Link>
+            <Link to="/home">Strona Główna</Link>
+            <Link to="/galleries">Galerie</Link>
+            <Link to="/categories">Kategorie</Link>
             <Link to="/gallery">Zdjęcia</Link>
             <div className='links'>
                 <button onClick={handleClick1}>Ustawienia</button>

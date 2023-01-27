@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from "react";
-import styl from "./linjika_style.module.css";
+import styl from "./linijka_style.module.css";
 import zdj from "../../../pliki/popo.jpg";
 import { useNavigate } from "react-router";
 
-function Linjika(props){
+function Linijka(props){
 
     const navigate=useNavigate();
 
@@ -30,4 +30,4 @@ function Linjika(props){
     )
 }
 
-export default Linjika
+export default Linijka
