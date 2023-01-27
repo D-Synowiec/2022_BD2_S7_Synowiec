@@ -23,6 +23,8 @@ function applyRelations(sequelize) {
     User.hasMany(Gallery, { as: "Galleries", foreignKey: "gallery_owner"});
     Gallery_Access.belongsTo(User, { as: "user_User", foreignKey: "user"});
     User.hasMany(Gallery_Access, { as: "Gallery_Accesses", foreignKey: "user"});
+    Photo.belongsTo(Gallery, { foreignKey: "galleries"});
+    Gallery.hasMany(Photo, { foreignKey: "galleries"});
 
 }
 

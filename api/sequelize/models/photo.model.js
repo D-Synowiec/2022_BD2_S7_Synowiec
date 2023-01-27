@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         allowNull: false
     },
     galleries: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     photo_file: {

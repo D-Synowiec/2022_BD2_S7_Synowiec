@@ -1,17 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors=require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,
-   optionSuccessStatus:200,
+const cors = require("cors");
+const corsOptions = {
+   origin: '*', 
+   credentials: true,
+   optionSuccessStatus: 200,
 }
 
  // Use this after the variable declaration
 
 const { models } = require('../sequelize');
 const userRouter = require('./routers/user');
-const galleryRouter = require('./routers/gallery')
+const galleryRouter = require('./routers/gallery');
+const photoRouter = require('./routers/photo');
 const app = express();
 
 // Enable JSON
@@ -21,7 +22,7 @@ app.use(cors(corsOptions));
 // Routers
 app.use(userRouter);
 app.use(galleryRouter);
-
+app.use(photoRouter);
 
 
 module.exports = app;
