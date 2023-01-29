@@ -7,10 +7,12 @@ const SearchPhoto = () => {
 
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
+    
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(searchFraze);
 
     // const response = await fetch(API, {
     //   method: 'POST',
