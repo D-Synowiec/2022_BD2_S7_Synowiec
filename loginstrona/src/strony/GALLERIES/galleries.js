@@ -10,60 +10,33 @@ import Bar from "../../komponenty/NavBar.js";
 function Galeria_strona(){
   const API = 'http://127.0.0.1:5000/api/gallery/me';
   let przekierunkowanie = useNavigate();
-  const [galerie, setGalleries]=useState();
-
-  useEffect(() => {
+    useEffect(() => {
     getGalleries();
   },[]);
+  const [galerie, setGalleries]=useState([]);
 
-    function getGalleries(){
-      axios.get(API,{
-        'headers': {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${Cookies.get("Ciastko")}`
-          },
-          
-        }}).then((result) => {
-          setGalleries(result.data);
-        }).catch((error) => {console.log('error bro')});
 
-        console.log('koniec axios');
-        console.log(galerie);
+
+     function getGalleries(){
+
+        axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+        {
+            setGalleries(result.data);
+        }).catch((error)=>{
+            });
     }
 
-    // function getGalleries(){
-    //   axios.get(API,{
-    //     'headers': {
-    //       'Authorization': 'Bearer' + Cookies.get("Ciastko").key,
-          
-    //     }}).then((result) => {
-    //       setGalleries(result.data);
-    //     }).catch((error) => {console.log('error bro')});
-    // }
 
-    // async function fetchData(API) {
-    //     const response = await fetch(API, {
-    //         method: 'GET',
-    //         headers: {
-    //           'Content-Type': 'application/json',
-    //           'Authorization': `${Cookies.get("Ciastko")}`
-    //         },
-    //       });
-    //       const data = await response.json();
-    //       console.log(data);
-    //       return data;
-    // }
 
-  const data = getGalleries();
-  const [dane_l,set_dane_l] = useState([{klucz:1, name:data},{klucz:2, name:'zdjecia'},{klucz:3, name:'galeira3'}]);
+  useEffect(() => {
+    setGalleries(galerie);
+  }, [galerie]);
 
-  const rysunek_linjiki = dane_l.map((element,index)=>{
+  const rysunek_linjiki = galerie.map((element,index)=>{
     return(
       <Linjika 
       key={index}
-      klucz={index}
+      klucz={element.id}
       // miniaturka={element.miniaturka}
       name={element.name}
       // data={element.data}
