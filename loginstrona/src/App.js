@@ -9,6 +9,7 @@ import Categories from "./strony/CATEGORIES/categories.js"
 import Category_strona from "./strony/CATEGORY/category.js";
 import Settings from "./strony/SETTINGS/settings.js"
 import SearchPhoto from "./strony/SEARCHPHOTO/searchphoto.js";
+import UploadPhoto from "./strony/UPLOADPHOTO/uploadPhoto.js";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
       <Route path="/galleries" element={<Galleries/>}/>
       <Route path="/categories" element={<Categories/>}/>
       <Route path="/category/:id" element={<Category_strona/>}/>
-      <Route path="/settings" element={<Settings/>}/>
+      <Route path="/options" element={<Settings/>}/>
+      <Route path="/uploadPhoto" element={<UploadPhoto/>}/>
 
       {/* pierwsza strona to to samo logowanie trzeba to zmienić
       poza tym nwm jak sie robi tu komentarze edit:już wiem*/}
