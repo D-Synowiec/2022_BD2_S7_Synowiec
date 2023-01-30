@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Bar from "../../komponenty/NavBar.js";
-import "./uploadPhoto.css"
+import "./uploadPhoto.css";
 
 const UploadAndDisplayImage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [selectedGallery, setSelectedGallery] = useState(null);
-
 
   function uploadSelectedImage(){
     
@@ -16,26 +14,17 @@ const UploadAndDisplayImage = () => {
     <>
     <Bar/>
     <div className="uploadStrona">
-      <h1>Dodaj zdjęcie</h1>
+      <h1 style={{fontSize:'2rem'}}>Dodaj zdjęcie</h1>
+      <br/>
       {selectedImage && (
-        <div>
-        <img alt="chosenImage" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+        <div className="inputy">
+        <img alt="chosenImage" width={"70%"} src={URL.createObjectURL(selectedImage)} />
         <br />
         <button onClick={()=>setSelectedImage(null)}>Odrzuć</button>
         <button onClick={()=>uploadSelectedImage()}>Dodaj</button>
         <br/><br/>
-        <form onSubmit={()=>setSelectedGallery()}>
-                <input className='input'
-                  type="text"
-                  value={selectedGallery}
-                  onChange={(event) => {setSelectedGallery(event.target.value);console.log('upload poszedl');}}
-                />
-                <button className='przycisk' type="submit">Dodaj</button>
-        </form>
-
         </div>
       )}
-      <br />
      
       <br /> 
       <input

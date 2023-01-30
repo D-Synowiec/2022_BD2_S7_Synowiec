@@ -14,7 +14,6 @@ function Gallery_strona(){
   console.log(params.id); 
 
   useEffect(() => {getPictures()},[]);
-  // useEffect(() => {setPictures(pictures)}, [pictures]);
   const [pictures, setPictures]=useState([]);
   const API = 'http://127.0.0.1:5000/api/gallery/';
   function getPictures(){
@@ -24,6 +23,8 @@ function Gallery_strona(){
     }).catch((error)=>{
         });
 }
+
+  useEffect(() => {setPictures(pictures)}, [pictures]);
 
     // const [dane_l,set_dane_l] = useState([
     //     {obrazek: zdj,},
