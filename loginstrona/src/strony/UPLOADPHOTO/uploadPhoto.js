@@ -6,8 +6,8 @@ const UploadAndDisplayImage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   function uploadSelectedImage(){
-    
-    console.log('wysylam zdjecie');
+    // console.log(selectedImage);
+    console.log(selectedImage.name);
   }
 
   return (
@@ -29,6 +29,7 @@ const UploadAndDisplayImage = () => {
       <br /> 
       <input
         type="file"
+        accept="image/*"
         name="myImage"
         onChange={(event) => {
           console.log(event.target.files[0]);
