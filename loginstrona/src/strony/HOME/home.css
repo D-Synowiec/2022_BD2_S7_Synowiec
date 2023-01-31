@@ -1,0 +1,22 @@
+body{
+    background-color: rgb(192, 193, 196);
+}
+
+.homeStrona .tekst{
+    padding: 10px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.homeStrona .tekst .naglowek{
+    font-size: 4rem;
+    color: black;
+    margin-bottom: 60px;
+}
+
+.homeStrona .tekst .opis{
+    text-align: left;
+    margin-left:20%;
+    margin-right: 20%;
+    font-size: 2rem;
+}

@@ -1,0 +1,40 @@
+.navbar{
+    background-color: rgb(47, 49, 59);
+    padding: 12px;
+    display: flex;
+    align-items:center;
+    margin: 0 auto;
+    border-bottom: 1px solid black;    
+}
+
+.navbar .links{
+    margin-left: auto;
+    background-color: rgb(47, 49, 59);
+}
+
+.navbar button{
+    margin-right: auto;
+    border: none;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(47, 49, 59);
+    color: rgb(228, 222, 222);
+    margin-right: 5px;
+}
+
+.navbar button:hover{
+    color: green;
+}
+
+.navbar a{
+    margin-left: 16px;
+    color: rgb(228, 222, 222);
+    background-color: rgb(47, 49, 59);
+    text-decoration: none;
+    padding: 6px;
+}
+
+.navbar a:hover{
+    color: green;
+}
