@@ -11,8 +11,8 @@ function Login_strona(){
 
     const API = 'http://localhost:5000/api/user/login';
 
-    const [username, setUsername] = useState('admin'/*zostaw puste potem*/);
-    const [password, setPassword] = useState('admin'/*zostaw puste potem*/);
+    const [username, setUsername] = useState('Test@Test.com');
+    const [password, setPassword] = useState('hash');
 
 
     const handleUsernameChange = (event) => {
@@ -30,9 +30,11 @@ function Login_strona(){
       //przekierunkowanie("/https://www.twitch.tv/popo");
       //window.location.href="https://www.twitch.tv/popo";
       //window.location.href="http://localhost:3000/home"
-      
 
       event.preventDefault();
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      console.log(hashedPassword);
 
       const response = await fetch(API, {
         method: 'POST',
@@ -46,27 +48,37 @@ function Login_strona(){
       });
       const data = await response.json();
       console.log(data);
+      // console.log(response);
 
-      const token = data.tokens;
-      Cookies.set("Ciastko", token, {expires: 30});
-      console.log(Cookies.get("Ciastko"));
-
-      const DBPassword = await bcrypt.hash("admin", 10);
-      console.log(DBPassword);//tu bedzie hasło z db zabiast tego nie
-
-      const hashedPassword = await bcrypt.hash(password, 10);
-      console.log(hashedPassword);
-      bcrypt.compare(password, DBPassword, (err,isMatch)=> {
-        if(isMatch)
-        {
-          console.log("poprawne hasło");
-          przekierunkowanie('/HOME');
-        }else{
+      if(response.status==203){
           console.log("niepoprawne hasło");
           przekierunkowanie('/incorrect_login');
-        }
       }
-      )
+      if(response.status==202){
+          const token = data.tokens;
+          Cookies.set("Ciastko", token, {expires: 30});
+          console.log(Cookies.get("Ciastko"));
+
+          console.log("poprawne hasło");
+          przekierunkowanie('/home');
+      }
+      
+
+      // bcrypt.compare(password, DBPassword, (err,isMatch)=> {
+      //   if(isMatch)
+      //   {
+      //     const token = data.tokens;
+      //     Cookies.set("Ciastko", token, {expires: 30});
+      //     console.log(Cookies.get("Ciastko"));
+
+      //     console.log("poprawne hasło");
+      //     przekierunkowanie('/home');
+      //   }else{
+      //     console.log("niepoprawne hasło");
+      //     przekierunkowanie('/incorrect_login');
+      //   }
+      // }
+      // )
 
       // validate the form values
       // call a login function
