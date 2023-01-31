@@ -8,23 +8,27 @@ import zdj2 from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import Fotka from "./komponenty/picture.js"
 import Bar from "../../komponenty/NavBar.js";
+import MetaData from "./komponenty/metaData";
 
 function Gallery_strona(){
   const params = useParams();
-  console.log(params.id); 
+  // console.log(params.id); 
 
-  useEffect(() => {getPictures()},[]);
-  const [pictures, setPictures]=useState([]);
-  const API = 'http://127.0.0.1:5000/api/gallery/';
-  function getPictures(){
+  useEffect(() => {getMetaData()},[]);
+  // const [pictures, setPictures]=useState([]);
+  const [metaData, setMetaData]=useState([]);
+
+  const API = `http://127.0.0.1:5000/api/gallery/${params.id}/photos`;//${}
+  function getMetaData(){
     axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
     {
-        setPictures(result.data);
+        setMetaData(result.data.Photos);
+        console.log(result.data);
     }).catch((error)=>{
         });
 }
 
-  useEffect(() => {setPictures(pictures)}, [pictures]);
+  // useEffect(() => {setPictures(pictures)}, [pictures]);
 
     // const [dane_l,set_dane_l] = useState([
     //     {obrazek: zdj,},
@@ -100,10 +104,11 @@ function Gallery_strona(){
     //     {obrazek: zdj2,}
     //   ])
     
-      const jeden_obrazek = pictures.map((element)=>{
+      const jeden_obrazek = metaData.map((element, index)=>{
         return(
-          <Fotka 
-          obrazek={element.obrazek}
+          <MetaData 
+          key={index}
+          photoIDs={element.id}
           />
         )
       })  
@@ -113,7 +118,7 @@ function Gallery_strona(){
         <Bar/>
         <div className={styl.moj_div}>
             <p className={styl.g_tekst}>ZDJĘCIA</p>
-                {jeden_obrazek} 
+            {jeden_obrazek} 
         </div>
       </div>
     )
