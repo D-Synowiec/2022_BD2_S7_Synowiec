@@ -43,8 +43,14 @@ router.get('/api/image/miniature/:id', auth, async (req, res) => {
             .resize(300, 300)
             .toBuffer();
 
-        res.contentType('image/jpeg');
-        res.send(compressedImage);
+        // res.contentType('image/jpeg');
+        // res.send(compressedImage);
+                // encode image data as base64
+        const base64Image = Buffer.from(compressedImage).toString('base64');
+        
+        res.send({
+            image: `data:image/jpeg;base64,${base64Image}`
+        });
  
 
     } catch (err) {
