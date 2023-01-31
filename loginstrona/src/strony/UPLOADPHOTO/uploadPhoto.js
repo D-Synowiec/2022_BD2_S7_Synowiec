@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import Bar from "../../komponenty/NavBar.js";
 import "./uploadPhoto.css";
 
 const UploadAndDisplayImage = () => {
@@ -14,7 +13,7 @@ const UploadAndDisplayImage = () => {
     extension: '',
     photo_file: null
   });
-//lololol
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -34,38 +33,35 @@ const UploadAndDisplayImage = () => {
     
     const form = new FormData();
     form.append('name', formData.name);
-    form.append('email', formData.owner);
+    form.append('owner', formData.owner);
+    form.append('size', formData.size);
+    form.append('resolution', formData.resolution);
+    form.append('galleries', formData.galleries);
+    form.append('extension', formData.extension);
     form.append('photo', formData.photo_file, formData.photo_file.name);
-    
-    axios.post('/api/submit-form', form, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.error(err);
-      });
+
+    // axios.post('/api/submit-form', form, {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data'
+    //   }
+    // })
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    //   .catch(err => {
+    //     console.error(err);
+    //   });
   };
 
   return (
     <>
     <form onSubmit={handleSubmit}>
       <div>
+        Nazwa:
         <input
           type="text"
           name="name"
           value={formData.name}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <input
-          type="text"
-          name="galleries"
-          value={formData.owner}
           onChange={handleChange}
         />
       </div>
@@ -77,7 +73,7 @@ const UploadAndDisplayImage = () => {
           onChange={handleFileChange}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">Dodaj zdjęcie</button>
     </form>
     </>
   );

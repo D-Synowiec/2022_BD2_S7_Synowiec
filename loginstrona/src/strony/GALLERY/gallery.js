@@ -3,22 +3,19 @@ import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import Cookies from "js-cookie";
 import styl from "./gallery_style.module.css";
-import zdj from "../../pliki/popo.jpg";
-import zdj2 from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
-import Fotka from "./komponenty/picture.js"
 import Bar from "../../komponenty/NavBar.js";
 import MetaData from "./komponenty/metaData";
 
 function Gallery_strona(){
   const params = useParams();
+  const navigate = useNavigate();
   // console.log(params.id); 
 
   useEffect(() => {getMetaData()},[]);
-  // const [pictures, setPictures]=useState([]);
   const [metaData, setMetaData]=useState([]);
 
-  const API = `http://127.0.0.1:5000/api/gallery/${params.id}/photos`;//${}
+  const API = `http://127.0.0.1:5000/api/gallery/${params.id}/photos`;//`${}`
   function getMetaData(){
     axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
     {
@@ -27,82 +24,6 @@ function Gallery_strona(){
     }).catch((error)=>{
         });
 }
-
-  // useEffect(() => {setPictures(pictures)}, [pictures]);
-
-    // const [dane_l,set_dane_l] = useState([
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj,},
-    //     {obrazek: zdj2,},
-    //     {obrazek: zdj2,}
-    //   ])
     
       const jeden_obrazek = metaData.map((element, index)=>{
         return(
@@ -113,12 +34,22 @@ function Gallery_strona(){
         )
       })  
 
+      async function handleClick1() {
+          navigate(`/uploadPhoto/${params.id}`);
+      }
+
     return(
       <div className={styl.moj_div2}>
         <Bar/>
         <div className={styl.moj_div}>
+          <div className={styl.przycisk1}>
+          <button className={styl.przycisk} onClick={handleClick1}>Dodaj zdjęcie</button>
+          </div>
             <p className={styl.g_tekst}>ZDJĘCIA</p>
-            {jeden_obrazek} 
+            <br/>
+            <div className={styl.wyswietlaneZdj}>
+            {jeden_obrazek}
+            </div>
         </div>
       </div>
     )

@@ -4,15 +4,15 @@ import Bar from "../../komponenty/NavBar.js";
 import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  async function handleClick1() {
-      navigate("/uploadPhoto");
-  }
+  // async function handleClick1() {
+  //     navigate("/uploadPhoto");
+  // }
   
-  async function handleClick2() {
-    navigate("/options");
-  }
+  // async function handleClick2() {
+  //   navigate("/options");
+  // }
 
   return (
     <div className='settingsStrona'>
@@ -20,10 +20,10 @@ const Settings = () => {
         <div className='tekst'>
             <h1 className='naglowek'>OPCJE</h1>
             <div className='opis'>
-                <button onClick={handleClick1}>Dodaj zdjęcie</button>
+                {/* <button onClick={handleClick1}>Dodaj zdjęcie</button>
                 <br/>
                 <button onClick={handleClick2}>Stwórz galerię</button>
-                <br/>
+                <br/> */}
 
             </div>
         </div>

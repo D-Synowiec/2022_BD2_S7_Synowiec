@@ -4,7 +4,6 @@ import zdj from "../../pliki/popo.jpg";
 import user_pic from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import bcrypt from 'bcryptjs';
-import Bar from "../../komponenty/NavBar.js";
 
 function Bad_login_strona(){
 
@@ -29,7 +28,6 @@ function Bad_login_strona(){
 
 return (
     <div className={styl.moj_div}>
-      <Bar/>
       <form className={styl.user_pass} onSubmit={handleSubmit}>
           
           

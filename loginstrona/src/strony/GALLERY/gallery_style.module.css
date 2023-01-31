@@ -3,7 +3,7 @@
     width: 100vw;
     height: auto;
     justify-content: space-evenly;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .g_tekst{
@@ -18,6 +18,32 @@
     width: 100vw;
     height: 100vh;
     justify-content: space-evenly;
-    text-align: center;
+    /* text-align: center; */
 }
 
+.przycisk{
+    background-color: rgb(224, 219, 211);
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    /* overflow: hidden; */
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
+    font-size: 1rem;
+    text-align: right;
+}
+
+.przycisk1{
+    text-align: right;
+    padding: 4px;
+    margin-right: 10px;
+}
+
+.przycisk:active{
+    box-shadow: none;
+    transform: translateY(2px);
+    transition: 0.1s;
+}
+
+.wyswietlaneZdj{
+    
+}

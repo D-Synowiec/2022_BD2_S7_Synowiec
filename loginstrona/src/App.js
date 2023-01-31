@@ -27,7 +27,7 @@ function App() {
       <Route path="/categories" element={<Categories/>}/>
       <Route path="/category/:id" element={<Category_strona/>}/>
       <Route path="/options" element={<Settings/>}/>
-      <Route path="/uploadPhoto" element={<UploadPhoto/>}/>
+      <Route path="/uploadPhoto/:id" element={<UploadPhoto/>}/>
 
       {/* pierwsza strona to to samo logowanie trzeba to zmienić
       poza tym nwm jak sie robi tu komentarze edit:już wiem*/}
