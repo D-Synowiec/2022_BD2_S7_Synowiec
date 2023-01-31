@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import "./uploadPhoto.css";
+import {useParams} from 'react-router-dom';
+import Bar from "../../komponenty/NavBar.js";
 
 const UploadAndDisplayImage = () => {
+  const params = useParams();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -55,6 +58,8 @@ const UploadAndDisplayImage = () => {
 
   return (
     <>
+    <Bar/>
+    <div className="uploadStrona">
     <form onSubmit={handleSubmit}>
       <div>
         Nazwa:
@@ -75,6 +80,7 @@ const UploadAndDisplayImage = () => {
       </div>
       <button type="submit">Dodaj zdjęcie</button>
     </form>
+    </div>
     </>
   );
 
