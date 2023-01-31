@@ -14,7 +14,7 @@ const UploadAndDisplayImage = () => {
     extension: '',
     photo_file: null
   });
-
+//lololol
   const handleChange = (e) => {
     setFormData({
       ...formData,
