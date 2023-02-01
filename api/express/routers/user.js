@@ -1,8 +1,19 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Sequelize, models } = require('../../sequelize');
 const auth = require('../middleware/auth');
 const router = new express.Router();
+
+async function hashPassword(password) {
+    const hash = await bcrypt.hash(password, 10);
+    return hash;
+  }
+  
+  async function comparePassword(password, hash) {
+    const isMatch = await bcrypt.compare(password, hash);
+    return isMatch;
+  }
 
 
 // Register
@@ -11,10 +22,13 @@ router.post('/api/user', async (req, res) => {
         where: {
             role_name: 'Basic_User'
         }
-    })
+    });
+    const hash = await hashPassword(req.body.password_hash);
+    
     const newUser = models.User.build({
         ...req.body,
-        RoleId: role.id
+        RoleId: role.id,
+        password_hash: hash
     });
     try {
         const existsUser = await models.User.findOne({
@@ -46,13 +60,13 @@ router.post('/api/user/login', async (req, res) => {
     try {
         const user = await models.User.findOne({
             where: {
-                email: req.body.email,
-                password_hash: req.body.password
+                email: req.body.email
             }
         });
-        if(!user) {
+        const isMatch = await comparePassword(req.body.password, user.password_hash);
+        if(!user || !isMatch) {
             return res.status(203).send({
-                "message": "Bad login or password"
+                "message": "Bad email or password"
             });
         }
         const token = jwt.sign({
@@ -90,13 +104,38 @@ router.post('/api/user/logout', auth, async (req, res) => {
     }
 });
 
+// Forgor password
+router.patch('/api/user/password', auth, async (req, res) => {
+    try {
+        const user = await models.User.findOne({
+            where: {
+                email: req.user.email
+            }
+        });
+        const isMatch = await comparePassword(req.body.password, user.password_hash);
+        if(!isMatch) return res.status(400).send({"message": "Bad password"});
+        const hash = await hashPassword(req.body.newPassword);
+        await models.User.update({
+            password_hash: hash
+        }, { 
+        where: {
+            id: req.user.id
+        },});
+        res.send(202);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send();
+    }
+});
+
 // Patch user TODO: Validate received information
 router.patch('/api/user/me', auth, async (req, res) => {
     try {
         await models.User.update(req.body, {
             where: {
                 id: req.user.id
-            }
+            },
         });
         res.send();
     } catch (e) {
@@ -112,6 +151,7 @@ router.delete('/api/user', auth, async (req, res) => {
     } catch (e) {
         res.send(e);
     }
-})
+});
+
 
 module.exports = router;
