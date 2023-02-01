@@ -21,10 +21,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING(65),
         allowNull: false,
     },
-    login: {
-        type: DataTypes.STRING(20),
-        allowNull: false,
-    },
     password_hash: {
         type: DataTypes.STRING(320),
         allowNull: false,

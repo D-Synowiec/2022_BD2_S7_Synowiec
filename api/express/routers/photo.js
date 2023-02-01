@@ -58,26 +58,26 @@ router.get('/api/image/miniature/:id', auth, async (req, res) => {
     }
 });
 
-// Get full size photo by id TODO: checking gallery
-router.get('/api/:gid/:pid', auth, async (req, res) => {
-    try {
-        const image = await models.Photo.findByPk(req.params.pid, {
-            include: {
-                model: models.Gallery,
-                attributes: ['gallery_owner', 'id']
-            }
-        });
+// Get full size photo by id TODO: FIX IT - /:gid/:id  - inny endpoint /api/category/id zapewne bral category jako :gid i wykonywal ten request
+// router.get('/api/:gid/:pid', auth, async (req, res) => {
+//     try {
+//         const image = await models.Photo.findByPk(req.params.pid, {
+//             include: {
+//                 model: models.Gallery,
+//                 attributes: ['gallery_owner', 'id']
+//             }
+//         });
 
-        if (!image || image.Gallery.gallery_owner !== req.user.id || image.Gallery.id != req.params.gid) return res.status(404).send({error: 'Image not found :('});
-        const bufferImage = await sharp(image.photo_file).toBuffer();
-        res.contentType('image/jpeg');
-        res.send(bufferImage);  
+//         if (!image || image.Gallery.gallery_owner !== req.user.id || image.Gallery.id != req.params.gid) return res.status(404).send({error: 'Image not found :('});
+//         const bufferImage = await sharp(image.photo_file).toBuffer();
+//         res.contentType('image/jpeg');
+//         res.send(bufferImage);  
         
 
-    } catch (error) {
-        res.status(503).send(error);
-    }
-});
+//     } catch (error) {
+//         res.status(503).send(error);
+//     }
+// });
 
 
 
