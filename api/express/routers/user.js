@@ -104,13 +104,38 @@ router.post('/api/user/logout', auth, async (req, res) => {
     }
 });
 
+// Forgor password
+router.patch('/api/user/password', auth, async (req, res) => {
+    try {
+        const user = await models.User.findOne({
+            where: {
+                email: req.user.email
+            }
+        });
+        const isMatch = await comparePassword(req.body.password, user.password_hash);
+        if(!isMatch) return res.status(400).send({"message": "Bad password"});
+        const hash = await hashPassword(req.body.newPassword);
+        await models.User.update({
+            password_hash: hash
+        }, { 
+        where: {
+            id: req.user.id
+        },});
+        res.send(202);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send();
+    }
+});
+
 // Patch user TODO: Validate received information
 router.patch('/api/user/me', auth, async (req, res) => {
     try {
         await models.User.update(req.body, {
             where: {
                 id: req.user.id
-            }
+            },
         });
         res.send();
     } catch (e) {

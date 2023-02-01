@@ -90,7 +90,7 @@ router.get('/api/gallery/:gid/photos', auth, async (req,res) => {
                 attributes: ['id', 'name']
             }
         });
-        if (!gallery) return res.status(404).send({message: "Gallery not found :("});
+        if (!gallery || req.user.id != gallery.gallery_owner) return res.status(404).send({message: "Gallery not found :("});
         res.send(gallery);
     } catch (error) {
         res.status(503).send(error);

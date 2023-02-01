@@ -10,7 +10,8 @@ const auth = async (req, res, next) => {
             where: {
               id: decoded.id,
               tokens: token
-            }    
+            },
+            attributes: ['primary_name', 'second_name', 'email', 'RoleId', 'id']  
           }); 
 
         if(!user) throw new Error();
