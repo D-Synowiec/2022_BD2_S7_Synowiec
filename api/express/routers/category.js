@@ -74,6 +74,13 @@ router.post('/api/category/:cid', auth, async (req, res) => {
             where: {
                 CategoryId: req.params.cid,
                 GalleryId: req.body.GalleryId
+            },
+            include: {
+                model: models.Gallery,
+                as: 'Gallery',
+                where: {
+                    gallery_owner: req.user.id
+                }
             }
         });
         if (vibeCheck) return res.status(409).send({"message": "This gallery already belongs to this category."});
@@ -85,6 +92,31 @@ router.post('/api/category/:cid', auth, async (req, res) => {
 });
 
 // Remove category from gallery
+router.delete('/api/category/:cid', auth, async (req, res) => {
+    try {
+        const vibeCheck = await models.Categorized_Gallery.findOne({
+            where: {
+                CategoryId: req.params.cid,
+                GalleryId: req.body.GalleryId
+            },
+            include: {
+                model: models.Gallery,
+                as: 'Gallery',
+                where: {
+                    gallery_owner: req.user.id
+                },
+            }
+        });
+        console.log(vibeCheck);
+        if(!vibeCheck) return res.status(404).send("You shound'nt be here :)");
+        await vibeCheck.destroy();
+        return res.status(204).send("Deleted");
 
+    } catch (error) {
+        res.status(500).send();
+    }
+    
+
+});
 
 module.exports = router;
