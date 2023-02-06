@@ -1,5 +1,5 @@
 .moj_div{
-    background-color: rgb(47, 49, 59);
+    background-color: rgb(192, 193, 196);
     width: 100vw;
     height: auto;
     justify-content: space-evenly;
@@ -7,14 +7,14 @@
 }
 
 .g_tekst{
-    color: rgb(224, 219, 211);
+    color: rgb(47, 49, 59);
     font-size: 5rem;
     text-align: center;
 }
 
 .moj_div2{
     /* głupie ale działa */
-    background-color: rgb(47, 49, 59);
+    background-color: rgb(192, 193, 196);
     width: 100vw;
     height: 100vh;
     justify-content: space-evenly;
@@ -49,4 +49,9 @@
     margin-right: 10%;
     display: flex;
     flex-direction: row;
+}
+
+.wyswietlaneZdj :hover{
+    background-color: rgb(139, 144, 173);
+    transition: 0.1s;
 }

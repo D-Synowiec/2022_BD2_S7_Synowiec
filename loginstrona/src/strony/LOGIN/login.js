@@ -12,7 +12,7 @@ function Login_strona(){
     const API = 'http://localhost:5000/api/user/login';
 
     const [username, setUsername] = useState('Test@Test.com');
-    const [password, setPassword] = useState('hash');
+    const [password, setPassword] = useState('123');
 
 
     const handleUsernameChange = (event) => {
@@ -34,7 +34,7 @@ function Login_strona(){
       event.preventDefault();
 
       const hashedPassword = await bcrypt.hash(password, 10);
-      console.log(hashedPassword);
+      // console.log(hashedPassword);
 
       const response = await fetch(API, {
         method: 'POST',
@@ -47,11 +47,11 @@ function Login_strona(){
         })
       });
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       // console.log(response);
 
       if(response.status==203){
-          console.log("niepoprawne hasło");
+          // console.log("niepoprawne hasło");
           przekierunkowanie('/incorrect_login');
       }
       if(response.status==202){
@@ -62,7 +62,9 @@ function Login_strona(){
           console.log("poprawne hasło");
           przekierunkowanie('/home');
       }
-      
+      if(response.status==500){
+        przekierunkowanie('/incorrect_login');
+      }
 
       // bcrypt.compare(password, DBPassword, (err,isMatch)=> {
       //   if(isMatch)

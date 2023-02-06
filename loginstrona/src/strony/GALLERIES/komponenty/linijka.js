@@ -7,7 +7,7 @@ function Linijka(props){
 
     const navigate=useNavigate();
 
-        console.log(props);
+        // console.log(props);
 
 
 

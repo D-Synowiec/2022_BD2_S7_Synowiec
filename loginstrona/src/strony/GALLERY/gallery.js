@@ -14,22 +14,25 @@ function Gallery_strona(){
 
   useEffect(() => {getMetaData()},[]);
   const [metaData, setMetaData]=useState([]);
+  const [gallName, setGallName]=useState([]);
 
   const API = `http://127.0.0.1:5000/api/gallery/${params.id}/photos`;//`${}`
   function getMetaData(){
     axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
     {
         setMetaData(result.data.Photos);
-        console.log(result.data);
+        setGallName(result.data.name)
+        // console.log(result.data);
     }).catch((error)=>{
         });
-}
+  }
     
       const jeden_obrazek = metaData.map((element, index)=>{
         return(
           <MetaData 
           key={index}
           photoIDs={element.id}
+          name={element.name}
           />
         )
       })  
@@ -45,7 +48,7 @@ function Gallery_strona(){
           <div className={styl.przycisk1}>
           <button className={styl.przycisk} onClick={handleClick1}>Dodaj zdjęcie</button>
           </div>
-            <p className={styl.g_tekst}>ZDJĘCIA</p>
+            <p className={styl.g_tekst}>{gallName}</p>
             <br/>
             <div className={styl.wyswietlaneZdj}>
             {jeden_obrazek}

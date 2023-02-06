@@ -24,7 +24,11 @@ const Settings = () => {
                 <br/>
                 <button onClick={handleClick2}>Stwórz galerię</button>
                 <br/> */}
-
+              zmien imie/nazwisko {/*(dane)*/}
+              <br/>
+              usun konto
+              <br/>
+              rejestracja** na6
             </div>
         </div>
     </div>
