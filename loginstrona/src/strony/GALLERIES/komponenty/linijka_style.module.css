@@ -28,7 +28,9 @@
     background-color: rgb(211, 211, 211);
 }
 
-
+.styl_linjiki:nth-child(even){
+    background-color: rgb(211, 211, 211);
+}
 
 .styl_zdj{
     width: 75px;
