@@ -18,6 +18,8 @@ const Settings = () => {
   const [password, setUsername] = useState('123');
   const [password_chk, setPassword] = useState('123');
   const [password_new, setPassword2] = useState('123');
+  const [name, setName] = useState('imie');
+  const [surname, setSurname] = useState('nazwisko');
 
 
   const handleUsernameChange = (event) => {
@@ -32,12 +34,16 @@ const Settings = () => {
     setPassword2(event.target.value);
   }
 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  }
+
+  const handleSurnameChange = (event) => {
+    setSurname(event.target.value);
+  }
+
   const handleSubmit = async (event) => {
       
-    //przekierunkowanie("/https://www.twitch.tv/popo");
-    //window.location.href="https://www.twitch.tv/popo";
-    //window.location.href="http://localhost:3000/home"
-
     event.preventDefault();
 
     if(password_chk===password)
@@ -50,10 +56,19 @@ const Settings = () => {
     }
   }
 
-  const handleSubmit1 = async (event) => {
-
+  const handleSubmitDELETE = async (event) => {
     event.preventDefault();
     console.log('usuń konto');
+  }
+
+  const handleSubmitNAME = async (event) => {
+    event.preventDefault();
+    console.log('zmień imie');
+  }
+
+  const handleSubmitSNAME = async (event) => {
+    event.preventDefault();
+    console.log('zmień nazwisko');
   }
 
 
@@ -65,7 +80,7 @@ const Settings = () => {
             <h1 className='naglowek'>OPCJE</h1>
             <form className='user_passs' onSubmit={handleSubmit}>
         
-        <label>
+          <label>
           Hasło:
           </label>
           <input className='input'
@@ -74,7 +89,7 @@ const Settings = () => {
             onChange={handleUsernameChange}
           />
         
-        <label>
+          <label>
           Powtórz Hasło:
           </label>
           <input className='input'
@@ -83,7 +98,7 @@ const Settings = () => {
             onChange={handlePasswordChange}
           />
 
-<label>
+          <label>
           Nowe Hasło:
           </label>
           <input className='input'
@@ -93,11 +108,30 @@ const Settings = () => {
           />
         
         <button className='styl_przyc' type="submit">Zmień Hasło</button>
+      <br/>
+
+          <label>
+          Imię:
+          </label>
+          <input className='input'
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+          />
+          <button className='styl_przyc' onClick={handleSubmitNAME} type="submit">Zmień Imię</button>
+          <br/>
+          <label>
+          Nazwisko:
+          </label>
+          <input className='input'
+            type="text"
+            value={surname}
+            onChange={handleSurnameChange}
+          />
+          <button className='styl_przyc2' onClick={handleSubmitSNAME} type="submit">Zmień Nazwisko</button>
+          <br/>
+      <button className='styl_przyc' onClick={handleSubmitDELETE} type="submit">Usuń Konto</button>
       </form>
-
-      <button className='styl_przyc' onClick={handleSubmit1} type="submit">Usuń Konto</button>
-
-
             <div className='opis'>
                 {/* <button onClick={handleClick1}>Dodaj zdjęcie</button>
                 <br/>
