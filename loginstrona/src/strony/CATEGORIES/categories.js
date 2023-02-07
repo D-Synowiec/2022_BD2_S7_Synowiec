@@ -8,23 +8,19 @@ import Cookies from "js-cookie";
 import axios from 'axios';
 
 function Categories(){
-
   let przekierunkowanie = useNavigate();
 
-  const API = 'http://127.0.0.1:5000/api/category/me';
+  const API = 'http://127.0.0.1:5000/api/category/';
     useEffect(() => {
     getCategories();
   },[]);
   const [kategorie, setCategories]=useState([]);
 
-
-
      function getCategories(){
-
         axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
         {
             setCategories(result.data);
-            console.log(result.data);
+            // console.log(result.data);
         }).catch((error)=>{
             });
     }
@@ -37,9 +33,8 @@ function Categories(){
       return(
         <Linjika 
         key={index}
-        // klucz={element.id}
-        // name={element.name}
-        // photoCount={element.photoCount}
+        name={element.name}
+        parentID={element.id}
         />
       )
     })

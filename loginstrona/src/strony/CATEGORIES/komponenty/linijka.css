@@ -34,7 +34,7 @@
 .styl_tekst1{
     /* font-family: 'Nsoto Sans', sans-serif; */
     font-size: 1.5rem;
-    width: 17%;
+    width: 40%;
     overflow: hidden;
 }
 
@@ -49,13 +49,18 @@
 }
 
 .styl_przycisk:hover{
-    /* background-color: rgb(177, 177, 177); */
+    background-color: rgb(177, 177, 177);
 }
 
 .styl_przycisk:active{
         box-shadow: none;
         transform: translateY(2px);
         transition: 0.1s;
+}
+
+.styl_dzieciKat{
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 /* .styl_linjiki>*{flex-grow: 0; flex-shrink: 0;} */

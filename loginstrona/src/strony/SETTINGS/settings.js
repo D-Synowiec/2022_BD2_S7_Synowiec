@@ -29,6 +29,8 @@ const Settings = () => {
               usun konto
               <br/>
               rejestracja** na6
+              <br/>
+              dodac pobieranie zdjecia i opis
             </div>
         </div>
     </div>
