@@ -1,19 +1,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
 
 .styl_linjiki{
-    /* background-color: pink; */
-    /*
-    width: 250px;
-    height: 200px;
-    */
-
-    display: flex;
-    /*flex-direction: row;*//*bo domyślnie jest row*/ 
-    align-items: center;
-    justify-content: space-around;
-    justify-items:center;
-
-    /* font-family: 'Noto Sans', sans-serif; */
     width: 100%;
     border:0.5px solid black;
     border-collapse: collapse;
