@@ -38,10 +38,27 @@ const router = new express.Router();
 //         res.status(400).send();
 //     }
 // });
-// Get all categories
+// Get all main categories
 router.get('/api/category', auth, async (req, res) => {
     try {
-        const categories = await models.Category.findAll();
+        const categories = await models.Category.findAll({
+            where: {
+                CategoryId: null
+            }
+        });
+        if(!categories) return res.status(404).send("Categories not found! Contact an admin!");
+        return res.send(categories);
+    } catch (error) {
+        res.status(500).send();
+    }
+});
+router.get('/api/category/:cid/child', auth, async (req, res) => {
+    try {
+        const categories = await models.Category.findAll({
+            where: {
+                CategoryId: req.params.cid
+            }
+        });
         if(!categories) return res.status(404).send("Categories not found! Contact an admin!");
         return res.send(categories);
     } catch (error) {
