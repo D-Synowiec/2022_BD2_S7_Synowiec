@@ -56,7 +56,7 @@ router.get('/api/image/miniature/:id', auth, async (req, res) => {
     }
 });
 
-router.get('/api/gallery/:gid/photo/:pid', auth, async (req, res) => {
+router.get('/api/photo/:pid', auth, async (req, res) => {
     try {
         const image = await models.Photo.findByPk(req.params.pid, {
             include: {
@@ -64,8 +64,7 @@ router.get('/api/gallery/:gid/photo/:pid', auth, async (req, res) => {
                 attributes: ['gallery_owner', 'id']
             }
         });
-
-        if (!image || image.Gallery.gallery_owner !== req.user.id || image.Gallery.id != req.params.gid) return res.status(404).send({error: 'Image not found :('});
+        if (!image || image.Gallery.gallery_owner !== req.user.id) return res.status(404).send({error: 'Image not found :('});
         const base64Image = Buffer.from(image.photo_file).toString('base64');
         
         res.send({
