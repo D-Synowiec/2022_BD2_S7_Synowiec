@@ -46,13 +46,13 @@ function Gallery_strona(){
         <Bar/>
         <div className={styl.moj_div}>
           <div className={styl.przycisk1}>
-          <button className={styl.przycisk} onClick={handleClick1}>Dodaj zdjęcie</button>
+            <button className={styl.przycisk} onClick={handleClick1}>Dodaj zdjęcie</button>
           </div>
-            <p className={styl.g_tekst}>{gallName}</p>
-            <br/>
-            <div className={styl.wyswietlaneZdj}>
+          <p className={styl.g_tekst}>{gallName}</p>
+          <br/>
+          <div className={styl.wyswietlaneZdj}>
             {jeden_obrazek}
-            </div>
+          </div>
         </div>
       </div>
     )

@@ -70,6 +70,10 @@
     /* background-color: black; */
 }
 
+.styl_przycisk:hover{
+    background-color: rgb(177, 177, 177);
+}
+
 /* .styl_linjiki>*{flex-grow: 0; flex-shrink: 0;} */
 /* .styl_linjiki>*{flex-basis: 0;}; */
 /* .styl_linjiki>*{width: 1fr}; */
