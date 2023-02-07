@@ -43,9 +43,7 @@ router.get('/api/image/miniature/:id', auth, async (req, res) => {
             .resize(300, 300)
             .toBuffer();
 
-        // res.contentType('image/jpeg');
-        // res.send(compressedImage);
-                // encode image data as base64
+
         const base64Image = Buffer.from(compressedImage).toString('base64');
         
         res.send({
@@ -58,26 +56,27 @@ router.get('/api/image/miniature/:id', auth, async (req, res) => {
     }
 });
 
-// Get full size photo by id TODO: FIX IT - /:gid/:id  - inny endpoint /api/category/id zapewne bral category jako :gid i wykonywal ten request
-// router.get('/api/:gid/:pid', auth, async (req, res) => {
-//     try {
-//         const image = await models.Photo.findByPk(req.params.pid, {
-//             include: {
-//                 model: models.Gallery,
-//                 attributes: ['gallery_owner', 'id']
-//             }
-//         });
+router.get('/api/gallery/:gid/photo/:pid', auth, async (req, res) => {
+    try {
+        const image = await models.Photo.findByPk(req.params.pid, {
+            include: {
+                model: models.Gallery,
+                attributes: ['gallery_owner', 'id']
+            }
+        });
 
-//         if (!image || image.Gallery.gallery_owner !== req.user.id || image.Gallery.id != req.params.gid) return res.status(404).send({error: 'Image not found :('});
-//         const bufferImage = await sharp(image.photo_file).toBuffer();
-//         res.contentType('image/jpeg');
-//         res.send(bufferImage);  
+        if (!image || image.Gallery.gallery_owner !== req.user.id || image.Gallery.id != req.params.gid) return res.status(404).send({error: 'Image not found :('});
+        const base64Image = Buffer.from(image.photo_file).toString('base64');
         
+        res.send({
+            image: `data:image/jpeg;base64,${base64Image}`
+        });
 
-//     } catch (error) {
-//         res.status(503).send(error);
-//     }
-// });
+    
+    } catch (error) {
+        res.status(503).send(error);
+    }
+});
 
 
 
