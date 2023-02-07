@@ -56,6 +56,23 @@ const UploadAndDisplayImage = () => {
     //   });
   };
 
+  const handlePhotoSubmit = async (event) => {
+    if(formData.name==''){
+      formData.name=formData.photo_file.name;
+    }
+    //formData.owner=
+    formData.size=formData.photo_file.size;
+    // formData.resolution=
+    formData.extension=formData.photo_file.type;
+    formData.galleries=params.id;
+
+    console.log(formData.photo_file);
+    console.log(formData.name);
+    console.log(formData.extension);
+    console.log(formData.galleries);
+  }
+
+
   return (
     <>
     <Bar/>
@@ -78,7 +95,7 @@ const UploadAndDisplayImage = () => {
           onChange={handleFileChange}
         />
       </div>
-      <button type="submit">Dodaj zdjęcie</button>
+      <button onClick={handlePhotoSubmit} type="submit">Dodaj zdjęcie</button>
     </form>
     </div>
     </>

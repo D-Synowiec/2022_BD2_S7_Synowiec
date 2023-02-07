@@ -4,12 +4,57 @@ import {useNavigate} from "react-router-dom";
 import Linjika from "./komponenty/linijka"
 import Gora from "./komponenty/gorna_linijka"
 import Bar from "../../komponenty/NavBar.js";
+import Cookies from "js-cookie";
+import axios from 'axios';
 
 function Categories(){
 
   let przekierunkowanie = useNavigate();
 
-    const handleSubmit = (event) => {
+  const API = 'http://127.0.0.1:5000/api/category/me';
+    useEffect(() => {
+    getCategories();
+  },[]);
+  const [kategorie, setCategories]=useState([]);
+
+
+
+     function getCategories(){
+
+        axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+        {
+            setCategories(result.data);
+            console.log(result.data);
+        }).catch((error)=>{
+            });
+    }
+
+    useEffect(() => {
+      setCategories(kategorie);
+    }, [kategorie]);
+
+    const rysunek_linjiki = kategorie.map((element,index)=>{
+      return(
+        <Linjika 
+        key={index}
+        // klucz={element.id}
+        // name={element.name}
+        // photoCount={element.photoCount}
+        />
+      )
+    })
+
+    return (
+      <div className='moj_div'>
+        <Bar/>
+        <Gora/>
+        {rysunek_linjiki}
+      </div>
+      
+      );
+
+
+    /*const handleSubmit = (event) => {
       //przekierunkowanie("/https://www.twitch.tv/popo");
       //window.location.href="https://www.twitch.tv/popo";
       //window.location.href="http://localhost:3000/login"
@@ -48,7 +93,7 @@ return (
       {rysunek_linjiki}
     </div>
     
-    );
+    );*/
 }
 
 export default Categories;

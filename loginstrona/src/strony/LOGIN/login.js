@@ -57,9 +57,9 @@ function Login_strona(){
       if(response.status==202){
           const token = data.tokens;
           Cookies.set("Ciastko", token, {expires: 30});
-          console.log(Cookies.get("Ciastko"));
+          // console.log(Cookies.get("Ciastko"));
 
-          console.log("poprawne hasło");
+          // console.log("poprawne hasło");
           przekierunkowanie('/home');
       }
       if(response.status==500){
