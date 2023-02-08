@@ -64,7 +64,7 @@ return (
           />
 
         <label>
-          Username:
+          Imię:
           </label>
           <input className={styl.input}
             type="text"
@@ -73,7 +73,7 @@ return (
           />
         
         <label>
-          Username:
+          Nazwisko:
           </label>
           <input className={styl.input}
             type="text"
@@ -82,7 +82,7 @@ return (
           />
           
         <label>
-         Username:
+         Login:
         </label>
         <input className={styl.input}
             type="text"
