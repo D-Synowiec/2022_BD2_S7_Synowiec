@@ -24,6 +24,10 @@ const NavBar = () => {
 
         navigate("/logout");
     }
+    async function handleClick3() {
+
+        navigate("/register");
+    }
 
     return ( 
         <nav className='navbar'>
@@ -32,8 +36,10 @@ const NavBar = () => {
             <Link to="/categories">Kategorie</Link>
             <Link to="/search-photo">Zdjęcia</Link>
             <div className='links'>
+                <button onClick={handleClick3}>Zarejestruj</button>
                 <button onClick={handleClick1}>Opcje</button>
                 <button onClick={handleClick2}>Wyloguj</button>
+                
             </div>
         </nav>
      );

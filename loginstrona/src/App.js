@@ -11,6 +11,7 @@ import Settings from "./strony/SETTINGS/settings.js"
 import SearchPhoto from "./strony/SEARCHPHOTO/searchphoto.js";
 import UploadPhoto from "./strony/UPLOADPHOTO/uploadPhoto.js";
 import Photo from "./strony/PHOTO/photo.js";
+import Register from "./strony/REGISTER/register.js";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path="/options" element={<Settings/>}/>
       <Route path="/uploadPhoto/:id" element={<UploadPhoto/>}/>
       <Route path="/photo/:id" element={<Photo/>}/>
+      <Route path="/register/" element={<Register/>}/>
 
       {/* pierwsza strona to to samo logowanie trzeba to zmienić
       poza tym nwm jak sie robi tu komentarze edit:już wiem*/}
