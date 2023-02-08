@@ -1,7 +1,5 @@
 import React,{useEffect,useState} from "react";
 import "./category.css";
-import zdj from "../../pliki/popo.jpg";
-import zdj2 from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import Fotka from "./komponenty/picture.js"
 import Bar from "../../komponenty/NavBar.js";
@@ -16,26 +14,26 @@ function Category_strona(){
   const [categoryPictures, setCategoryPictures]=useState([]);
   const [categoryName, setCategoryName]=useState([]);
 
-  const API = `http://127.0.0.1:5000/api/category/${params.id}/photos`;
+  const API = `http://127.0.0.1:5000/api/category/${params.id}`;
   function getCategoryPictures(){
     axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
     {
-        setCategoryPictures(result.data.Photos);
-        setCategoryName(result.data.name)
+        // setCategoryPictures(result.data.Photos);
+        // setCategoryName(result.data.name);
         console.log(result.data);
     }).catch((error)=>{
         });
-  }
+    }
     
-      const jeden_obrazek = categoryPictures.map((element, index)=>{
-        return(
-          <Fotka
-          key={index}
-          photoID={element.id}
-          name={element.name}
-          />
-        )
-      })
+      // const jeden_obrazek = categoryPictures.map((element, index)=>{
+      //   return(
+      //     <Fotka
+      //     key={index}
+      //     photoID={element.id}
+      //     name={element.name}
+      //     />
+      //   )
+      // })
 
     return(
       <div className='stronaKategoria'>
