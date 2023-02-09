@@ -46,7 +46,7 @@ const Settings = () => {
       
     event.preventDefault();
 
-    if(password_chk===password)
+    if(password_chk===password_new)
     {
       console.log('git');
       console.log(password_new);
@@ -58,7 +58,7 @@ const Settings = () => {
 
   const handleSubmitDELETE = async (event) => {
     event.preventDefault();
-    console.log('usuń konto');
+    console.log('usuń konto');// get, post, delete do używania bedzie
   }
 
   const handleSubmitNAME = async (event) => {
@@ -84,13 +84,13 @@ const Settings = () => {
           Hasło:
           </label>
           <input className='input'
-            type="text"
+            type="password"
             value={password}
             onChange={handleUsernameChange}
           />
         
           <label>
-          Powtórz Hasło:
+          Nowe Hasło:
           </label>
           <input className='input'
             type="password"
@@ -99,7 +99,7 @@ const Settings = () => {
           />
 
           <label>
-          Nowe Hasło:
+          Powtórz Hasło:
           </label>
           <input className='input'
             type="password"

@@ -5,6 +5,11 @@ import user_pic from "../../pliki/user_pic.png";
 import {useNavigate} from "react-router-dom";
 import Popup from 'reactjs-popup';
 import Cookies from 'js-cookie';
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: "http://localhost:5000/api",
+})
 
 function Register_strona(){
 
@@ -25,21 +30,34 @@ function Register_strona(){
     }
 
     const handleNameChange = (event) => {
-      setPassword(event.target.value);
+      setName(event.target.value);
     }
 
     const handleSurnameChange = (event) => {
-        setPassword(event.target.value);
+        setSurname(event.target.value);
     }
 
     const handleLoginChange = (event) => {
-        setPassword(event.target.value);
+        setLogin(event.target.value);
     }
   
     let przekierunkowanie = useNavigate();
 
     const handleSubmit = async (event) => {
       event.preventDefault();
+      try{
+        const res = api.post("/user",{email:username,password_hash:password,primary_name:name,second_name:surname,login:login})
+        if(res.status!=200){//w backu jest 201 a powinno być 409
+          console.log(res);//k**** daniel to do zrobienia tutaj sie prosze wyjasnić bo k**** nwm jaki status ty se wymyśliłeś do istniejącego uzytkownika
+          przekierunkowanie("/home");
+        }
+        else{
+          console.log("istnieje");
+        }
+      }
+      catch(err){
+        console.log(err);
+      };
     }
 
 return (

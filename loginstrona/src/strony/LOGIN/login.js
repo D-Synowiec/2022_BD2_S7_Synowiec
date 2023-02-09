@@ -11,7 +11,7 @@ function Login_strona(){
 
     const API = 'http://localhost:5000/api/user/login';
 
-    const [username, setUsername] = useState('Freont@Test.com');
+    const [username, setUsername] = useState('Test@Test.com');
     const [password, setPassword] = useState('123');
 
 
