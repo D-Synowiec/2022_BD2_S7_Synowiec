@@ -132,19 +132,7 @@ const Settings = () => {
           <br/>
       <button className='styl_przyc' onClick={handleSubmitDELETE} type="submit">Usuń Konto</button>
       </form>
-            <div className='opis'>
-                {/* <button onClick={handleClick1}>Dodaj zdjęcie</button>
-                <br/>
-                <button onClick={handleClick2}>Stwórz galerię</button>
-                <br/> */}
-              zmien imie/nazwisko {/*(dane)*/}
-              <br/>
-              usun konto
-              <br/>
-              rejestracja** na6
-              <br/>
-              dodac pobieranie zdjecia i opis
-            </div>
+      <br/><br/>
         </div>
         
     </div>

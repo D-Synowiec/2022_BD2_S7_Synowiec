@@ -10,16 +10,14 @@ import Cookies from "js-cookie";
 function Category_strona(){
   const params = useParams();
 
-  useEffect(() => {getCategoryPictures()},[]);
-  const [categoryPictures, setCategoryPictures]=useState([]);
-  const [categoryName, setCategoryName]=useState([]);
+  useEffect(() => {getCategoryGalleries()},[]);
+  const [categoryGalleries, setCategoryGalleries]=useState([]);
 
   const API = `http://127.0.0.1:5000/api/category/${params.id}`;
-  function getCategoryPictures(){
+  function getCategoryGalleries(){
     axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
     {
-        // setCategoryPictures(result.data.Photos);
-        // setCategoryName(result.data.name);
+        setCategoryGalleries(result.data);
         console.log(result.data);
     }).catch((error)=>{
         });

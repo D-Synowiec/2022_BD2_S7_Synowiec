@@ -20,7 +20,7 @@ function Categories(){
         axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
         {
             setCategories(result.data);
-            // console.log(result.data);
+            console.log(result.data);
         }).catch((error)=>{
             });
     }

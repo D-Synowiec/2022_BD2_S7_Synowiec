@@ -1,7 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
 
 body{
-    margin:0;
+    margin: 0;
     overflow-x: hidden;
 }
 
@@ -9,7 +9,9 @@ body{
     background-color: rgb(47, 49, 59);
     width: 100vw;
     height: 100vh;
-    
+    background-color: rgb(47, 49, 59);
+    display:flex;
+    flex-direction:column;
 }
 
 .user_pass{
@@ -62,11 +64,30 @@ body{
 }
 
 .styl_przyc:hover{
-    /* background-color: rgb(177, 177, 177); */
+    background-color: rgb(177, 177, 177);
 }
 
 .styl_przyc:active{
         box-shadow: none;
         transform: translateY(2px);
         transition: 0.1s;
+}
+
+.register_button{
+    border-radius: 5px;
+    background-color: rgb(228, 222, 222);
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: auto;
+}
+
+.register_button:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+.register_button:active{
+    box-shadow: none;
+    transform: translateY(2px);
+    transition: 0.1s;
 }
