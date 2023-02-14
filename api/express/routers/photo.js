@@ -9,7 +9,7 @@ const router = new express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Add photo (duh)
+// Add photo (duh) #FIXME: Not checking if he can add to gallery
 router.post('/api/photo/add', auth, upload.single('photo_file'), async (req, res) => {
     try {
         const photo = await models.Photo.create({

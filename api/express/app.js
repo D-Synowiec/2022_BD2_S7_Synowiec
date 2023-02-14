@@ -14,6 +14,7 @@ const userRouter = require('./routers/user');
 const galleryRouter = require('./routers/gallery');
 const photoRouter = require('./routers/photo');
 const categoryRouter = require('./routers/category');
+const backupRouter = require('./routers/backup');
 const app = express();
 
 // Enable JSON
@@ -25,6 +26,7 @@ app.use(userRouter);
 app.use(galleryRouter);
 app.use(photoRouter);
 app.use(categoryRouter);
+app.use(backupRouter);
 
 
 module.exports = app;

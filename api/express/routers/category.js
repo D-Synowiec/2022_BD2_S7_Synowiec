@@ -1,28 +1,28 @@
 const express = require('express');
-const { Sequelize, models } = require('../../sequelize');
+const { Sequelize, models} = require('../../sequelize');
 const auth = require('../middleware/auth');
 
 const router = new express.Router();
 // TODO: MANAGMENT SHOULD BE ADMIN THING
 // Create category TODO: ADD ADMIN CHECK
-// router.post('/api/category', auth, async (req, res) => {
-//     const newCategory = models.Category.build({
-//         name: req.body.name,
-//         CategoryId: req.body.parent || null
-//     });
-//     try {
-//         const existingCategory = await models.Category.findOne({
-//             where: {
-//                 name: req.body.name
-//             }
-//         });
-//         if(existingCategory) return res.status(409).send({message: 'You have category with this name.'});
-//         newCategory.save();
-//         res.status(201).send(newGallery);
-//     } catch (error) {
-//         res.send(error);
-//     }
-// });
+router.post('/api/category', auth, async (req, res) => {
+    const newCategory = models.Category.build({
+        name: req.body.name,
+        CategoryId: req.body.parent || null
+    });
+    try {
+        const existingCategory = await models.Category.findOne({
+            where: {
+                name: req.body.name
+            }
+        });
+        if(existingCategory) return res.status(409).send({message: 'You have category with this name.'});
+        newCategory.save();
+        res.status(201).send(newGallery);
+    } catch (error) {
+        res.send(error);
+    }
+});
 
 // Delete category (TODO: ADMINCHECK )
 // router.delete('/api/category/:id', auth, async (req, res) => {
@@ -69,21 +69,58 @@ router.get('/api/category/:cid/child', auth, async (req, res) => {
 // Get all galleries with this category
 router.get('/api/category/:cid', auth, async (req, res) => {
     try {
-        const galleries = await models.Categorized_Gallery.findAll({
-            where: {
-                id: req.params.cid
-            },
-            attributes: [],
-            include: {
-                model: models.Gallery,
-                as: 'Gallery',
-                where: {
-                    gallery_owner: req.user.id
-                }
-            }
+        // const galleries = await models.Categorized_Gallery.findAll({
+        //     where: {
+        //         id: req.params.cid
+        //     },
+        //     attributes: [],
+        //     include: {
+        //         model: models.Gallery,
+        //         as: 'Gallery',
+        //         [Sequelize.Op.and]: [
+        //             { gallery_owner: req.user.id },
+        //             Sequelize.literal('`Categorized_Gallery`.`id` = `Gallery`.`categorized_gallery_id`')
+        //           ]
+        //     }
+        // });
+        // const galleries = await models.Gallery.findAll({
+        //     where: {
+        //         gallery_owner: req.user.id
+        //     },
+        //     include: {
+        //     model: models.Categorized_Gallery,
+        //     as: 'Categorized_Galleryies',
+        //     },
+        //     where: {
+        //         id: req.params.cid
+        //     }
+
+        // });
+        // const galleries = await models.Gallery.findAll({
+        //     include: {
+        //       model: models.Categorized_Gallery,
+        //       as: 'Categorized_Galleryies',
+        //       where: {
+        //         id: req.params.cid
+        //       }
+        //     }
+        //   });
+        const galleries = await models.Gallery.findAll({
+            include: [{
+                model: models.Categorized_Gallery,
+                as: 'Categorized_Galleryies',
+                where: { CategoryId: req.params.cid },
+                attributes: []
+            }],
+            where: { gallery_owner: req.user.id }
         });
+        const categoryName = await models.Category.findByPk(req.params.cid);
+
         if(!galleries) res.status(404).send({"message": "Galleries not found :("});
-        res.send(galleries);
+        res.send({
+            name: categoryName.name,
+            galleries
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send();
