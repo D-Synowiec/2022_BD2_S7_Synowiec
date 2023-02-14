@@ -22,6 +22,7 @@ function Galeria_strona(){
         axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
         {
             setGalleries(result.data);
+            // console.log(result.data);
         }).catch((error)=>{
             });
     }

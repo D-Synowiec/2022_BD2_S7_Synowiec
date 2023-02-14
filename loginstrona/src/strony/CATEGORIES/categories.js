@@ -20,7 +20,7 @@ function Categories(){
         axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
         {
             setCategories(result.data);
-            console.log(result.data);
+            // console.log(result.data);
         }).catch((error)=>{
             });
     }
@@ -40,7 +40,7 @@ function Categories(){
     })
 
     return (
-      <div className='moj_div'>
+      <div className='stronaKategorii'>
         <Bar/>
         <Gora/>
         {rysunek_linjiki}

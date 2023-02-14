@@ -25,3 +25,13 @@
     box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
     font-size: 0.75rem;
 }
+
+.przycisk:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+.przycisk:active{
+        box-shadow: none;
+        transform: translateY(2px);
+        transition: 0.1s;
+}

@@ -94,11 +94,11 @@ return (
     <div className={styl.moj_div}>
       <button className={styl.register_button} onClick={handleClick1}>Zarejestruj</button>
 
-      <Popup trigger={<button style={{ backgroundColor: "rgb(228, 222, 222)", marginLeft: 5, marginTop: 5, marginRight:'auto'}}>?</button>} position="right center">
+      {/* <Popup trigger={<button style={{ backgroundColor: "rgb(228, 222, 222)", marginLeft: 5, marginTop: 5, marginRight:'auto'}}>?</button>} position="right center">
         <div style={{color: "white", backgroundColor: 'green', borderRadius: '10px', padding: '5px', marginLeft: 5}}>
           By się zalogować wpisz login i hasło
         </div>
-      </Popup>
+      </Popup> */}
 
       <form className={styl.user_pass} onSubmit={handleSubmit}>
         <img className={styl.foto} src={user_pic}/>

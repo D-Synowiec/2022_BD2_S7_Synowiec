@@ -3,6 +3,7 @@ import axios from 'axios';
 import "./uploadPhoto.css";
 import {useParams} from 'react-router-dom';
 import Bar from "../../komponenty/NavBar.js";
+import Cookies from "js-cookie";
 
 const UploadAndDisplayImage = () => {
   const params = useParams();
@@ -33,7 +34,7 @@ const UploadAndDisplayImage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+    // console.log('-handleSubmit');
     const form = new FormData();
     form.append('name', formData.name);
     form.append('owner', formData.owner);
@@ -57,10 +58,12 @@ const UploadAndDisplayImage = () => {
   };
 
   const handlePhotoSubmit = async (event) => {
+    // console.log('-handlePhotoSubmit');
     if(formData.name==''){
       formData.name=formData.photo_file.name;
     }
-    //formData.owner=
+    // console.log(Cookies.get("Ciastko").name);
+    // formData.owner=;
     formData.size=formData.photo_file.size;
     // formData.resolution=
     formData.extension=formData.photo_file.type;
@@ -68,6 +71,7 @@ const UploadAndDisplayImage = () => {
 
     console.log(formData.photo_file);
     console.log(formData.name);
+    console.log(formData.size);
     console.log(formData.extension);
     console.log(formData.galleries);
   }

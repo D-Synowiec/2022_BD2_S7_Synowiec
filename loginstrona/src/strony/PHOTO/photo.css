@@ -10,3 +10,20 @@
     width: auto;
     height: auto;
 }
+
+.nazwaPhoto{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.opisPhoto{
+    margin-left: 10%;
+}
+
+.ownerParagraph{
+    font-size: 1.5rem;   
+}
+
+.tagParagraph{
+    font-size: 1.5rem;
+}
