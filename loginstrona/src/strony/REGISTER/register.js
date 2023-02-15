@@ -12,12 +12,13 @@ const api = axios.create({
 })
 
 function Register_strona(){
+    const navigate = useNavigate();
 
-    const [username, setUsername] = useState('nowy_użytkownik@Test.com');
-    const [password, setPassword] = useState('123');
-    const [name, setName] = useState('Paulina');
-    const [surname, setSurname] = useState('Farkas');
-    const [login, setLogin] = useState('Grubas');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
+    const [login, setLogin] = useState('');
 
 
 
@@ -60,8 +61,13 @@ function Register_strona(){
       };
     }
 
+    const goBACK = () => {
+      navigate("/login");
+    }
+
 return (
     <div className={styl.moj_div}>
+      <button className='przycisk' onClick={goBACK} style={{marginTop:'5px', marginLeft:'5px'}}>Wróć</button>
       <form className={styl.user_pass} onSubmit={handleSubmit}>
         <label>
           Username:

@@ -5,6 +5,7 @@ import styl from "./gorna_linijka_style.module.css";
 function gorna_linijka(){
 
     return(
+        <>
         <div className={styl.styl_linjiki}>
             {/* <p className={styl.styl_tekstm}>ikona</p> */}
             
@@ -18,6 +19,8 @@ function gorna_linijka(){
             
             <p className={styl.styl_tekstp}></p>
         </div>
+        
+        </>
     )
 }
 
