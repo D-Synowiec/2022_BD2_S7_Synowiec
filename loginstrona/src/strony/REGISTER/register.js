@@ -48,12 +48,13 @@ function Register_strona(){
       event.preventDefault();
       try{
         const res = api.post("/user",{email:username,password_hash:password,primary_name:name,second_name:surname,login:login})
-        if(res.status!=200){//w backu jest 201 a powinno być 409
-          console.log(res);//k**** daniel to do zrobienia tutaj sie prosze wyjasnić bo k**** nwm jaki status ty se wymyśliłeś do istniejącego uzytkownika
-          przekierunkowanie("/home");
+        console.log(res);
+        if(res.status==201){//w backu jest 201 a powinno być 409
+          console.log("istnieje");
         }
         else{
-          console.log("istnieje");
+          console.log(res);//k**** daniel to do zrobienia tutaj sie prosze wyjasnić bo k**** nwm jaki status ty se wymyśliłeś do istniejącego uzytkownika
+          przekierunkowanie("/home");
         }
       }
       catch(err){

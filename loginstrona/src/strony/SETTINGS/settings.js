@@ -2,8 +2,12 @@ import React,{useEffect,useState} from 'react'
 import "./settings.css"
 import Bar from "../../komponenty/NavBar.js";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
-
+const api = axios.create({
+  baseURL: "http://localhost:5000/api",
+})
 
 const Settings = () => {
   // const navigate = useNavigate();
@@ -20,6 +24,8 @@ const Settings = () => {
   const [password_new, setPassword2] = useState('123');
   const [name, setName] = useState('imie');
   const [surname, setSurname] = useState('nazwisko');
+
+  let przekierunkowanie = useNavigate();
 
 
   const handleUsernameChange = (event) => {
@@ -56,19 +62,40 @@ const Settings = () => {
     }
   }
 
+  const API="http://localhost:5000/api/user"
+
   const handleSubmitDELETE = async (event) => {
     event.preventDefault();
     console.log('usuń konto');// get, post, delete do używania bedzie
+    try{
+      //const res = api.delete("/user")
+      axios.delete(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+        {
+            console.log(result);
+            przekierunkowanie("/login");
+            // console.log(result.data);
+        }).catch((error)=>{
+      });
+
+
+      //console.log(res);
+      //przekierunkowanie("/login");
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
   const handleSubmitNAME = async (event) => {
     event.preventDefault();
     console.log('zmień imie');
+    // nie ma api bo danielka boli ząbek :C
   }
 
-  const handleSubmitSNAME = async (event) => {
+  const handleSubmitPASSWORDCHANGE = async (event) => {
     event.preventDefault();
     console.log('zmień nazwisko');
+    // nie ma api bo danielka boli ząbek :C
   }
 
 
@@ -128,7 +155,7 @@ const Settings = () => {
             value={surname}
             onChange={handleSurnameChange}
           />
-          <button className='styl_przyc2' onClick={handleSubmitSNAME} type="submit">Zmień Nazwisko</button>
+          <button className='styl_przyc2' onClick={handleSubmitPASSWORDCHANGE} type="submit">Zmień Nazwisko</button>
           <br/>
       <button className='styl_przyc' onClick={handleSubmitDELETE} type="submit">Usuń Konto</button>
       </form>
