@@ -20,7 +20,10 @@ export const MetaData = (props) => {
           // console.log(result.data);
         })
         .catch((error) => {
-          console.error(error);
+          // console.error(error);
+          if (error.message==='Request failed with status code 401'){
+            navigate('/login');
+        }
         });
     }, [props.photoIDs]);
   

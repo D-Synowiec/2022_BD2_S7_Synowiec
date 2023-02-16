@@ -20,6 +20,9 @@ function Linijka(props){
             setChildren(result.data);
             // console.log(result.data);
         }).catch((error)=>{
+            if (error.message==='Request failed with status code 401'){
+                navigate('/login');
+            }
             });
     }
 

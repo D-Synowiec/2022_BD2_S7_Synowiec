@@ -47,6 +47,9 @@ function Gallery_strona(){
       {
         navigate('/galleries');
       }).catch((error)=>{
+        if (error.message==='Request failed with status code 401'){
+          navigate('/login');
+      }
         });
       }
 

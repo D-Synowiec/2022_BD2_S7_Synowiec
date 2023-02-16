@@ -23,6 +23,9 @@ function OneGallery(props){
         setGallName(result.data.name)
         // console.log(result.data);
     }).catch((error)=>{
+      if (error.message==='Request failed with status code 401'){
+        navigate('/login');
+    }
         });
   }
     

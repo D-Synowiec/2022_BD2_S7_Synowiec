@@ -27,7 +27,10 @@ export const Photo = () => {
             // console.log(result.data);
           })
           .catch((error) => {
-            console.error(error);
+            // console.error(error);
+            if (error.message==='Request failed with status code 401'){
+              navigate('/login');
+          }
           });
 
           const API2 = `http://127.0.0.1:5000/api/photo/${params.id}/info`;
@@ -38,7 +41,10 @@ export const Photo = () => {
               // console.log(result.data);
             })
             .catch((error) => {
-              console.error(error);
+              // console.error(error);
+              if (error.message==='Request failed with status code 401'){
+                navigate('/login');
+            }
             });
       }, [params.id]);
     
@@ -49,6 +55,9 @@ export const Photo = () => {
         // console.log('usuniete');
         navigate('/galleries');
       }).catch((error)=>{
+        if (error.message==='Request failed with status code 401'){
+          navigate('/login');
+      }
         });
       }
 
@@ -86,9 +95,15 @@ export const Photo = () => {
               // console.log(result.data);
             })
             .catch((error) => {
-              console.error(error);
+              // console.error(error);
+              if (error.message==='Request failed with status code 401'){
+                navigate('/login');
+            }
             });
           }).catch((error)=>{
+            if (error.message==='Request failed with status code 401'){
+              navigate('/login');
+          }
             // if (error.message==='Request failed with status code 409'){
             //   setActive(true);
             // }
@@ -115,9 +130,15 @@ export const Photo = () => {
               setTagList(result.data.Tags);
             })
             .catch((error) => {
-              console.error(error);
+              // console.error(error);
+              if (error.message==='Request failed with status code 401'){
+                navigate('/login');
+            }
             });
           }).catch((error)=>{
+            if (error.message==='Request failed with status code 401'){
+              navigate('/login');
+          }
             if(error.message=='Request failed with status code 404'){
               setActive2(true);
             }

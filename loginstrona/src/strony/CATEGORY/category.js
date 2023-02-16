@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 
 function Category_strona(){
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {getCategoryGalleries()},[]);
   const [categoryGalleries, setCategoryGalleries]=useState([]);
@@ -23,6 +24,9 @@ function Category_strona(){
         setCategoryName(result.data.name);
         console.log(result.data);
     }).catch((error)=>{
+      if (error.message==='Request failed with status code 401'){
+        navigate('/login');
+    }
         });
     }
     

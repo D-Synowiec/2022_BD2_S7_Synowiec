@@ -31,6 +31,9 @@ function Galeria_strona(){
             setGalleries(result.data);
             // console.log(result.data);
         }).catch((error)=>{
+          if (error.message==='Request failed with status code 401'){
+            navigate('/login');
+        }
             });
     }
 
@@ -79,6 +82,9 @@ function Galeria_strona(){
         if (error.message==='Request failed with status code 409'){
           setActive(true);
         }
+        if (error.message==='Request failed with status code 401'){
+          navigate('/login');
+      }
       });
 
     }

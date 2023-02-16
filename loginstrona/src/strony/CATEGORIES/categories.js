@@ -9,6 +9,7 @@ import axios from 'axios';
 
 function Categories(){
   let przekierunkowanie = useNavigate();
+  const navigate = useNavigate();
 
   const API = 'http://127.0.0.1:5000/api/category/';
     useEffect(() => {
@@ -22,6 +23,10 @@ function Categories(){
             setCategories(result.data);
             // console.log(result.data);
         }).catch((error)=>{
+          if (error.message==='Request failed with status code 401'){
+            navigate('/login');
+        }
+
             });
     }
 

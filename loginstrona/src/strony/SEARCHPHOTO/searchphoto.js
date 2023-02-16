@@ -1,9 +1,15 @@
 import React,{useEffect,useState} from "react";
 import "./searchphoto.css"
 import Bar from "../../komponenty/NavBar.js";
+import Cookies from "js-cookie";
+import axios from 'axios';
+import Photo from "../GALLERY/komponenty/metaData.js";
+import {useNavigate} from "react-router-dom";
 
 const SearchPhoto = () => {
   const [searchFraze, setSearch] = useState();
+  const [photoInfo, setPhotoInfo]=useState([]);
+  const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
@@ -12,30 +18,37 @@ const SearchPhoto = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(searchFraze);
+    // console.log(searchFraze);
 
-    // const response = await fetch(API, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ 
-    //   email: username,
-    //   password: password
-    //   })
-    // });
-    // const data = await response.json();
-    // console.log(data);
 
-    // const token = data.tokens;
-    // Cookies.set("Ciastko", token, {expires: 30});
-    // console.log(Cookies.get("Ciastko"));
+    const API = 'http://127.0.0.1:5000/api/find';
+          axios.post(API, {name: searchFraze, type: 2}, {'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+          {
+            setPhotoInfo(result.data);
+            // console.log(result.data);
+          }).catch((error)=>{
+            if (error.message==='Request failed with status code 401'){
+              navigate('/login');
+          }
+
+          });
 
   }
 
+  const jednoPhoto = photoInfo.map((element, index)=>{
+    return(
+      <Photo 
+      key={index}
+      photoIDs={element.id}
+      name={element.name}
+      />
+    )
+  })  
+
   return (
-    <div className='searchphotoStrona'>
+    <>
         <Bar/>
+        <div className='searchphotoStrona'>
         <div className='tekst'>
             <h1 className='naglowek'>Zdjęcie:</h1>
             <div className='opis'>
@@ -51,7 +64,11 @@ const SearchPhoto = () => {
 
             </div>
         </div>
+        <div className="zdjeciaWyswietlane">
+          {jednoPhoto}
+        </div>
     </div>
+    </>
   )
 }
 

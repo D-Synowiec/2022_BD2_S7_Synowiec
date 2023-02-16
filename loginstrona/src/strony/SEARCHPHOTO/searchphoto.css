@@ -28,3 +28,17 @@ body{
 .searchphotoStrona .tekst .opis .searchTab .input{
     width: 60%;
 }
+
+.zdjeciaWyswietlane{
+    margin-left: 10%;
+    margin-right: 10%;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.zdjeciaWyswietlane :hover{
+    background-color: rgb(139, 144, 173);
+    transition: 0.1s;
+}

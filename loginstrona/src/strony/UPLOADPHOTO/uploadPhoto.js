@@ -56,6 +56,9 @@ const UploadAndDisplayImage = () => {
       {
         navigate(`/gallery/${params.id}`)
       }).catch((error)=>{
+        if (error.message==='Request failed with status code 401'){
+          navigate('/login');
+      }
         // console.log(error.response);
       });
     }
