@@ -12,7 +12,9 @@ const api = axios.create({
 })
 
 function Galeria_strona(){
+  const navigate = useNavigate();
   const API = 'http://127.0.0.1:5000/api/gallery/me';
+  const API2 = 'http://127.0.0.1:5000/api/gallery';
   let przekierunkowanie = useNavigate();
     useEffect(() => {
     getGalleries();
@@ -59,16 +61,26 @@ function Galeria_strona(){
 
   const HandleSubmit = async (event) => {
     event.preventDefault();
-
+    if(newGalleryName==''){
+      setActive(true);
+      return;
+    }
     if (!newGalleryName.replace(/\s/g, '').length) {
       setActive(true);
     }
+    
     else{
-      const res = api.post("/gallery",{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}, 'name': newGalleryName, 'gallery_owner': '2'})
-      
-      // if(res.status!=200){
-        console.log(res);
-      // }
+      // const res = api.post("/gallery",{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}, 'name': newGalleryName, 'gallery_owner': '2'})
+      axios.post(API2, {name: newGalleryName, gallery_owner: '2'}, {'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+      {
+        getGalleries();
+      }).catch((error)=>{
+        // console.log(error.message);
+        if (error.message==='Request failed with status code 409'){
+          setActive(true);
+        }
+      });
+
     }
 
   }

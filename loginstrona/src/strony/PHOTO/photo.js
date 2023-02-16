@@ -2,12 +2,14 @@ import React,{useEffect,useState} from "react";
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import Cookies from "js-cookie";
+import {useNavigate} from "react-router-dom";
 import Bar from "../../komponenty/NavBar.js";
 import "./photo.css"
 import popo from "../../pliki/popo.jpg"
 
 export const Photo = () => {
     const params = useParams();
+    const navigate = useNavigate();
     // console.log(params.id);
     const [picture, setPicture]=useState(null);
     const [pictureData, setPictureData]=useState('');
@@ -34,11 +36,23 @@ export const Photo = () => {
             });
       }, [params.id]);
     
+      async function handleClick1() {
+        const API = `http://127.0.0.1:5000/api/photo/${params.id}`;
+        axios.delete(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+      {
+        // console.log('usuniete');
+        navigate('/galleries');
+      }).catch((error)=>{
+        });
+      }
 
     return (
         <>
             <Bar/>
             <div className="stronaPhotoDisp">
+            <div className='przycisk1' style={{display:'flex', justifyContent:'space-between'}}>
+              <button className='przycisk' onClick={handleClick1} style={{width:'auto', marginLeft:'3px'}}>Usuń zdjęcie</button>
+            </div>
               <p className="nazwaPhoto">{pictureData.name}</p>
                 <div className="photoDisplay">
                     {picture ? <img className="fotka" src={picture } alt='skill issue' /> : <p>Loading...</p> }

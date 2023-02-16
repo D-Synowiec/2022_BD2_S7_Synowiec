@@ -17,6 +17,7 @@ function Gallery_strona(){
   const [gallName, setGallName]=useState([]);
 
   const API = `http://127.0.0.1:5000/api/gallery/${params.id}/photos`;//`${}`
+  const API2 = `http://127.0.0.1:5000/api/gallery/${params.id}`;
   function getMetaData(){
     axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
     {
@@ -41,11 +42,20 @@ function Gallery_strona(){
           navigate(`/uploadPhoto/${params.id}`);
       }
 
+      async function handleClick2() {
+        axios.delete(API2,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+      {
+        navigate('/galleries');
+      }).catch((error)=>{
+        });
+      }
+
     return(
       <div className={styl.moj_div2}>
         <Bar/>
         <div className={styl.moj_div}>
-          <div className={styl.przycisk1}>
+          <div className={styl.przycisk1} style={{display:'flex', justifyContent:'space-between'}}>
+            <button className={styl.przycisk} onClick={handleClick2}>Usuń galerię</button>
             <button className={styl.przycisk} onClick={handleClick1}>Dodaj zdjęcie</button>
           </div>
           <p className={styl.g_tekst}>{gallName}</p>
