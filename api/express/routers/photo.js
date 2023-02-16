@@ -76,11 +76,16 @@ router.get('/api/photo/:pid', auth, async (req, res) => {
         res.status(503).send(error);
     }
 });
-// #TODO: Permision check :)
+// Metadata about photo #TODO: Permision check :)
 router.get('/api/photo/:pid/info', auth, async (req, res) => { 
     try {
         const image = await models.Photo.findByPk(req.params.pid, {
-            attributes: ['name', 'size', 'extension', 'owner']
+            attributes: ['name', 'size', 'extension', 'owner'],
+            include: {
+                model: models.Tag,
+                as: "Tags",
+                attributes: ['name']
+            }
         });
         if(!image) return res.status(404).send();
 
