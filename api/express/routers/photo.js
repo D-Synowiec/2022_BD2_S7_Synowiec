@@ -126,20 +126,42 @@ router.get('/api/find', auth, async (req, res) => {
             return res.send(galleries);
         }
         if(req.query.type == "2") { // Photo
-            const photos = await models.Photo.findAll({
+            let photos = await models.Photo.findAll({
                 where: {
                     name: req.query.name
                 },
-                include: {
+                include: [{
                     model: models.Gallery,
                     attributes: ['gallery_owner', 'id']
+                }],
+                attributes: ['id', 'name']
+            });
+            if (!photos) return res.status(404).send();
+            photos = photos.filter(photo => photo.Gallery.gallery_owner == req.user.id);
+            return res.send(photos);
+        }
+        if(req.query.type == "3") { // Tag
+            let photos = await models.Tag.findAll({
+                where: {
+                    name: `#${req.query.name}`
+                },
+                include: {
+                    model: models.Photo,
+                    as: 'photo',
+                    attributes: ['id', 'name'],
+                    include: {
+                        model: models.Gallery,
+                        attributes: ['gallery_owner', 'id']
+                    }
                 }
             });
-            if (!image || image.Gallery.gallery_owner !== req.user.id) return res.status(404).send();
-
+            console.log(photos);
+            if (!photos) return res.status(404).send();
+            photos = photos.filter(tag => tag.photo.Gallery.gallery_owner == req.user.id);
             return res.send(photos);
         }
     } catch (error) {
+        console.log(error);
         res.status(504).send(error)
     }
 });
