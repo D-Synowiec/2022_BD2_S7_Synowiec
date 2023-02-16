@@ -34,7 +34,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"primary_name\": \"Tester\",\r\n    \"second_name\": \"Testowy\",\r\n    \"email\": \"Test@Test.com\",\r\n    \"password_hash\": \"123\"\r\n\r\n    \r\n}",
+							"raw": "{\r\n    \"primary_name\": \"A\",\r\n    \"second_name\": \"A\",\r\n    \"email\": \"B@Test.com\",\r\n    \"password_hash\": \"123\"\r\n\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -111,7 +111,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"Test@Test.com\",\r\n     \"password\": \"123\"\r\n   \r\n}",
+							"raw": "{\r\n    \"email\": \"Front@Test.com\",\r\n     \"password\": \"123\"\r\n   \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -160,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password_hash\": \"hash\"\r\n}",
+							"raw": "{\r\n    \"primary_name\": \"Testuwa\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -223,7 +223,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Testowa Galeria\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Fajna Galeria\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -283,7 +283,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "3"
 								}
 							]
 						}
@@ -359,7 +359,7 @@
 								{
 									"key": "photo_file",
 									"type": "file",
-									"src": "/C:/Users/Dany/Downloads/1.png"
+									"src": "/C:/Users/Dany/Downloads/326337219_494093819585784_1060563373690049130_n.jpg"
 								},
 								{
 									"key": "owner",
@@ -368,7 +368,7 @@
 								},
 								{
 									"key": "name",
-									"value": "Happy Pepe",
+									"value": "Fajne3",
 									"type": "default"
 								},
 								{
@@ -378,7 +378,12 @@
 								},
 								{
 									"key": "galleries",
-									"value": "1",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "size",
+									"value": "121",
 									"type": "default"
 								}
 							],
@@ -436,24 +441,73 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/:gid/:pid",
+							"raw": "localhost:5000/api/photo/:pid",
 							"host": [
 								"localhost"
 							],
 							"port": "5000",
 							"path": [
 								"api",
-								":gid",
+								"photo",
 								":pid"
 							],
 							"variable": [
 								{
-									"key": "gid",
-									"value": "1"
-								},
-								{
 									"key": "pid",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get photo metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/photo/:pid/info",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"photo",
+								":pid",
+								"info"
+							],
+							"variable": [
+								{
+									"key": "pid",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete photo by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/photo/:pid",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"photo",
+								":pid"
+							],
+							"variable": [
+								{
+									"key": "pid",
+									"value": "123"
 								}
 							]
 						}
@@ -472,7 +526,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Wesele\",\r\n    \"parent\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -512,7 +566,7 @@
 							"variable": [
 								{
 									"key": "cid",
-									"value": "1"
+									"value": "4"
 								}
 							]
 						}
@@ -583,6 +637,222 @@
 								{
 									"key": "cid",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  main categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  child categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/category/:cid/child",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"category",
+								":cid",
+								"child"
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Backup",
+			"item": [
+				{
+					"name": "Create Backup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/:gid/backups",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								":gid",
+								"backups"
+							],
+							"variable": [
+								{
+									"key": "gid",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Add tag",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"RobiWrazenie\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/photo/:pid/tag",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"photo",
+								":pid",
+								"tag"
+							],
+							"variable": [
+								{
+									"key": "pid",
+									"value": "14"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add tag Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"#undefined\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/photo/:pid/tag",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"photo",
+								":pid",
+								"tag"
+							],
+							"variable": [
+								{
+									"key": "pid",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Find",
+			"item": [
+				{
+					"name": "Find Photos/Galleries",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": 1,\r\n    \"name\": \"Fajna Galeria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/find",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"find"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "2",
+									"description": "1 - galeria; 2 - photo; 3 - tag",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "lolz",
+									"disabled": true
 								}
 							]
 						}
