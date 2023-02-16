@@ -92,6 +92,19 @@ router.get('/api/photo/:pid/info', auth, async (req, res) => {
     }
 });
 
+// Delete photo
+router.delete('/api/photo/:pid', auth, async (req, res) => {
+    try {
+        const image = await models.Photo.findByPk(req.params.pid);
+        if (!image) return res.status(404).send();
+        // TODO: Check permision :)
+
+        await image.destroy();
+        return res.send();
+    } catch (e) {
+        res.status(503).send(e);
+    }
+});
 
 module.exports = router;
 
