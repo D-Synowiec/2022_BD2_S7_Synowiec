@@ -112,12 +112,12 @@ router.delete('/api/photo/:pid', auth, async (req, res) => {
 });
 
 // Find photo/gallery
-router.get('/api/find', auth, async (req, res) => {
+router.post('/api/find', auth, async (req, res) => {
     try {
-        if(req.query.type == "1") { // Gallery
+        if(req.body.type == "1") { // Gallery
             const galleries = await models.Gallery.findAll({
                 where: {
-                    name: req.query.name,
+                    name: req.body.name,
                     gallery_owner: req.user.id
                 }
             });
@@ -125,10 +125,10 @@ router.get('/api/find', auth, async (req, res) => {
 
             return res.send(galleries);
         }
-        if(req.query.type == "2") { // Photo
+        if(req.body.type == "2") { // Photo
             let photos = await models.Photo.findAll({
                 where: {
-                    name: req.query.name
+                    name: req.body.name
                 },
                 include: [{
                     model: models.Gallery,
@@ -140,10 +140,10 @@ router.get('/api/find', auth, async (req, res) => {
             photos = photos.filter(photo => photo.Gallery.gallery_owner == req.user.id);
             return res.send(photos);
         }
-        if(req.query.type == "3") { // Tag
+        if(req.body.type == "3") { // Tag
             let photos = await models.Tag.findAll({
                 where: {
-                    name: `#${req.query.name}`
+                    name: `#${req.body.name}`
                 },
                 include: {
                     model: models.Photo,
