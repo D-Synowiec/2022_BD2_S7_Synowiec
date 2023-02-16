@@ -20,7 +20,7 @@ const NavBar = () => {
             }
           });
           Cookies.remove('Ciastko');
-          console.log(Cookies.get("Ciastko"));
+        //   console.log(Cookies.get("Ciastko"));
 
         navigate("/logout");
     }

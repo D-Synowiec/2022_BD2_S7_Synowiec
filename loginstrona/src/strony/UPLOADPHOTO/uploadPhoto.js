@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 
 const UploadAndDisplayImage = () => {
   const params = useParams();
+  const API = 'http://127.0.0.1:5000/api/photo/add';
 
   const [formData, setFormData] = useState({
     name: '',
@@ -44,17 +45,13 @@ const UploadAndDisplayImage = () => {
     form.append('extension', formData.extension);
     form.append('photo', formData.photo_file, formData.photo_file.name);
 
-    // axios.post('/api/submit-form', form, {
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //   }
-    // })
-    //   .then(res => {
-    //     console.log(res);
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //   });
+    axios.post(API, {photo_file: '1010', owner: '2', name:'test578',size: '3', resolution:'FIXME', extension:'image/jpeg', galleries:params.id}, {'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+      {
+        
+      }).catch((error)=>{
+        
+      });
+    
   };
 
   const handlePhotoSubmit = async (event) => {
@@ -70,10 +67,10 @@ const UploadAndDisplayImage = () => {
     formData.galleries=params.id;
 
     console.log(formData.photo_file);
-    console.log(formData.name);
-    console.log(formData.size);
-    console.log(formData.extension);
-    console.log(formData.galleries);
+    // console.log(formData.name);
+    // console.log(formData.size);
+    // console.log(formData.extension);
+    // console.log(formData.galleries);
   }
 
 

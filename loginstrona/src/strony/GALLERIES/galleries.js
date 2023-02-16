@@ -70,8 +70,8 @@ function Galeria_strona(){
     }
     
     else{
-      // const res = api.post("/gallery",{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}, 'name': newGalleryName, 'gallery_owner': '2'})
-      axios.post(API2, {name: newGalleryName, gallery_owner: '2'}, {'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+      //gallery_owner: '2' -> trzeba??
+      axios.post(API2, {name: newGalleryName}, {'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
       {
         getGalleries();
       }).catch((error)=>{
