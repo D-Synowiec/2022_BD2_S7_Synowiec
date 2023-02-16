@@ -111,5 +111,34 @@ router.delete('/api/photo/:pid', auth, async (req, res) => {
     }
 });
 
+// Find photo/gallery
+router.get('/api/find', auth, async (req, res) => {
+    try {
+        if(req.query.type == "1") { // Gallery
+            const galleries = await models.Gallery.findAll({
+                where: {
+                    name: req.query.name,
+                    gallery_owner: req.user.id
+                }
+            });
+            if (!galleries) return res.status(404).send();
+
+            return res.send(galleries);
+        }
+        if(req.query.type == "2") { // Photo
+            const photos = await models.Photo.findAll({
+                where: {
+                    name: req.query.name
+                },
+                include: {
+                    model: models.Gallery,
+                    attributes: ['gallery_owner', 'id']
+                }
+            });
+        }
+    } catch (error) {
+        res.status(504).send(error)
+    }
+});
 module.exports = router;
 

@@ -17,7 +17,7 @@ router.post('/api/photo/:pid/tag', auth, async (req, res) => {
 });
 
 // Remove tag from photo
-router.delete('/api/photo/:pid/tag', auth, async (req, res) => {
+router.post('/api/photo/:pid/tag/remove', auth, async (req, res) => {
     try {
         const tagToDelete = await models.Tag.findOne({
             where: {
