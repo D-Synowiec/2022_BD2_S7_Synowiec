@@ -20,9 +20,10 @@ async function checkDatabaseConnection() {
 
 async function init() {
     await checkDatabaseConnection();
-    await sequelize.sync();
+    await sequelize.sync({});
     app.listen(PORT, () => {
         console.log(`API is working on port ${PORT}!`);
+       
     });
     
 }
