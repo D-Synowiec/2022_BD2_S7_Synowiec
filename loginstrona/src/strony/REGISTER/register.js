@@ -46,20 +46,32 @@ function Register_strona(){
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-      try{
-        const res = api.post("/user",{email:username,password_hash:password,primary_name:name,second_name:surname,login:login})
-        console.log(res);
-        if(res.status==201){//w backu jest 201 a powinno być 409
-          console.log("istnieje");
-        }
-        else{
-          console.log(res);//k**** daniel to do zrobienia tutaj sie prosze wyjasnić bo k**** nwm jaki status ty se wymyśliłeś do istniejącego uzytkownika
-          przekierunkowanie("/home");
-        }
-      }
-      catch(err){
-        console.log(err);
-      };
+      
+        api.post("/user",{email:username,password_hash:password,primary_name:name,second_name:surname,login:login}).then((res) =>
+          {
+          console.log(res.status);
+          if(res.status==201){
+            //console.log("istnieje");
+            przekierunkowanie ("/user_exists");
+          }else{
+            przekierunkowanie("/home");
+          }
+          // console.log(result.data);
+          }).catch((error)=>{
+        });
+
+
+      //   if(res.status==201){//w backu jest 201 a powinno być 409
+      //     console.log("istnieje");
+      //   }
+      //   else{
+      //     console.log(res);//k**** daniel to do zrobienia tutaj sie prosze wyjasnić bo k**** nwm jaki status ty se wymyśliłeś do istniejącego uzytkownika
+      //     przekierunkowanie("/home");
+      //   }
+      // }
+      // catch(err){
+      //   console.log(err);
+      // };
     }
 
     const goBACK = () => {

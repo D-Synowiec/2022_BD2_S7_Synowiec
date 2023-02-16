@@ -12,6 +12,8 @@ import SearchPhoto from "./strony/SEARCHPHOTO/searchphoto.js";
 import UploadPhoto from "./strony/UPLOADPHOTO/uploadPhoto.js";
 import Photo from "./strony/PHOTO/photo.js";
 import Register from "./strony/REGISTER/register.js";
+import Logout_strona1 from "./strony/SETTINGS/bad_login/bad_login.js";
+import Useristnieje_strona from "./strony/REGISTER/bad_user/bad_user.js";
 
 function App() {
   return (
@@ -20,8 +22,10 @@ function App() {
       <Route path="/login" element={<Login_strona/>}/>
       <Route path="/incorrect_login" element={<Bad_login_strona/>}/>
       <Route path="/logout" element={<Logout_strona/>}/>
+      <Route path="/wrong_password_options" element={<Logout_strona1/>}/>
       <Route path="/home" element={<Home_stron/>}/>
       <Route path="/" element={<Login_strona/>}/>
+      <Route path="/user_exists" element={<Useristnieje_strona/>}/>
       {/* <Route path="/gallery" element={<Gallery_strona/>}/> */}
       <Route path="/search-photo" element={<SearchPhoto/>}/>
       <Route path="/gallery/:id" element={<Gallery_strona/>}/>
