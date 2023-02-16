@@ -22,7 +22,7 @@ router.post('/api/photo/:pid/tag/remove', auth, async (req, res) => {
         const tagToDelete = await models.Tag.findOne({
             where: {
                 photo_id: req.params.pid,
-                name: req.body.name
+                name: `#${req.body.name}`
             }
         });
         if (!tagToDelete) return res.status(404).send();

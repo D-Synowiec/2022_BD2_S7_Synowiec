@@ -135,6 +135,9 @@ router.get('/api/find', auth, async (req, res) => {
                     attributes: ['gallery_owner', 'id']
                 }
             });
+            if (!image || image.Gallery.gallery_owner !== req.user.id) return res.status(404).send();
+
+            return res.send(photos);
         }
     } catch (error) {
         res.status(504).send(error)
