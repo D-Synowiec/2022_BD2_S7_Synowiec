@@ -27,3 +27,51 @@
 .tagParagraph{
     font-size: 1.5rem;
 }
+
+.tagList{
+    margin-left: 5%;
+}
+
+.przyciskTagow{
+    width: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
+    font-size: 0.75rem;
+}
+
+.przyciskTagow:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+.przyciskTagow:active{
+        box-shadow: none;
+        transform: translateY(2px);
+        transition: 0.1s;
+}
+
+.przyciskTagow2{
+    width: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
+    font-size: 0.75rem;
+}
+
+.przyciskTagow2:hover{
+    background-color: rgb(177, 177, 177);
+}
+
+.przyciskTagow2:active{
+        box-shadow: none;
+        transform: translateY(2px);
+        transition: 0.1s;
+}
+
+.nazwaNowegoTagu{
+    margin-right: 3px;
+}
+
+.opisPhoto{
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
+    width:80%;
+}

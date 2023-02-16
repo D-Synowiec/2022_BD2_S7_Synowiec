@@ -3,17 +3,18 @@ import axios from 'axios';
 import "./uploadPhoto.css";
 import {useParams} from 'react-router-dom';
 import Bar from "../../komponenty/NavBar.js";
+import {useNavigate} from "react-router-dom";
 import Cookies from "js-cookie";
 
 const UploadAndDisplayImage = () => {
   const params = useParams();
   const API = 'http://127.0.0.1:5000/api/photo/add';
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
     owner: '',
     size: '',
-    resolution: '',
     galleries: '', //id
     extension: '',
     photo_file: null
@@ -26,6 +27,13 @@ const UploadAndDisplayImage = () => {
     });
   };
 
+  const handleChange2 = (e) => {
+    setFormData({
+      ...formData,
+      owner: e.target.value
+    });
+  };
+
   const handleFileChange = (e) => {
     setFormData({
       ...formData,
@@ -34,47 +42,49 @@ const UploadAndDisplayImage = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // console.log('-handleSubmit');
+    if(!(formData.photo_file==null)){
+      e.preventDefault();
     const form = new FormData();
     form.append('name', formData.name);
     form.append('owner', formData.owner);
     form.append('size', formData.size);
-    form.append('resolution', formData.resolution);
     form.append('galleries', formData.galleries);
     form.append('extension', formData.extension);
-    form.append('photo', formData.photo_file, formData.photo_file.name);
+    form.append('photo_file', formData.photo_file, formData.photo_file.name);
 
-    axios.post(API, {photo_file: '1010', owner: '2', name:'test578',size: '3', resolution:'FIXME', extension:'image/jpeg', galleries:params.id}, {'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
+    axios.post(API, form, {'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
       {
-        
+        navigate(`/gallery/${params.id}`)
       }).catch((error)=>{
-        
+        // console.log(error.response);
       });
+    }
+    
     
   };
 
   const handlePhotoSubmit = async (event) => {
-    // console.log('-handlePhotoSubmit');
-    if(formData.name==''){
-      formData.name=formData.photo_file.name;
+    if(!(formData.photo_file==null)){
+      if(formData.name==''){
+        formData.name=formData.photo_file.name;
+      }
+      if(formData.owner==''){
+        formData.owner='unknown';
+      }else{
+        formData.owner=formData.owner;
+      }
+      formData.size=formData.photo_file.size;
+      formData.extension=formData.photo_file.type.slice(6);
+      formData.galleries=params.id;
+  
+      // console.log(formData);
+      // console.log(formData.photo_file);
     }
-    // console.log(Cookies.get("Ciastko").name);
-    // formData.owner=;
-    formData.size=formData.photo_file.size;
-    // formData.resolution=
-    formData.extension=formData.photo_file.type;
-    formData.galleries=params.id;
-
-    console.log(formData.photo_file);
-    // console.log(formData.name);
-    // console.log(formData.size);
-    // console.log(formData.extension);
-    // console.log(formData.galleries);
+    
   }
 
 
-  return (
+  return ( //dodac input do ownera
     <>
     <Bar/>
     <div className="uploadStrona">
@@ -86,6 +96,15 @@ const UploadAndDisplayImage = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
+        />
+      </div>
+      <div>
+        Autor:
+        <input
+          type="text"
+          // name="name"
+          value={formData.owner}
+          onChange={handleChange2}
         />
       </div>
       <div>
