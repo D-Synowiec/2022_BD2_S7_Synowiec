@@ -16,8 +16,8 @@ router.post('/api/photo/add', auth, upload.single('photo_file'), async (req, res
             photo_file: req.file.buffer,
             owner: req.body.owner,
             name: req.body.name,
-            size: 3, // TODO: Calculate it somehow xD
-            resolution: "FIXME", // FIXME:
+            size: req.body.size,
+            resolution: "Soon", // FIXME:
             extension: req.body.extension,
             galleries: req.body.galleries
         });
