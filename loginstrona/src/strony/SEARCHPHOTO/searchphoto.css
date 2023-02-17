@@ -4,14 +4,14 @@ body {
 
 .searchphotoStrona .tekst {
   padding: 10px;
-  margin-top: 40px;
+  margin-top: 0.5rem;
   text-align: center;
 }
 
 .searchphotoStrona .tekst .naglowek {
   font-size: 3rem;
   color: black;
-  margin-bottom: 60px;
+  margin-bottom: 1rem;
 }
 
 .searchphotoStrona .tekst .opis {
@@ -19,6 +19,7 @@ body {
   margin-left: 20%;
   margin-right: 20%;
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .searchphotoStrona .tekst .opis .searchTab {
@@ -41,4 +42,21 @@ body {
 .zdjeciaWyswietlane :hover {
   background-color: rgb(139, 144, 173);
   transition: 0.1s;
+}
+
+.wyborWyszukania{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width:fit-content;
+  margin-left: 1rem;
+}
+
+.inputTyp{
+  text-align: left;
+}
+
+.przycisk{
+  width:auto;
+  margin-left: 5px;
 }

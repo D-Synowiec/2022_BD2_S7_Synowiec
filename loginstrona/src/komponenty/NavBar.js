@@ -22,7 +22,7 @@ const NavBar = () => {
       })
       .then((result) => {
         setMyName(result.data.primary_name);
-        console.log(result.data.primary_name);
+        // console.log(result.data.primary_name);
       })
       .catch((error) => {
         // console.log(error);
@@ -54,7 +54,7 @@ const NavBar = () => {
       <Link to="/home">Strona Główna</Link>
       <Link to="/galleries">Galerie</Link>
       <Link to="/categories">Kategorie</Link>
-      <Link to="/search-photo">Zdjęcia</Link>
+      <Link to="/search-photo">Wyszukaj</Link>
       <div className="links">
         <button onClick={handleClick1}>Opcje</button>
         <button onClick={handleClick2}>Wyloguj</button>

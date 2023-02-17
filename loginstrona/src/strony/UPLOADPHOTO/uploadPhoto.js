@@ -52,11 +52,7 @@ const UploadAndDisplayImage = () => {
       form.append("extension", formData.extension);
       form.append("photo_file", formData.photo_file, formData.photo_file.name);
 
-      axios
-        .post(API, form, {
-          headers: { Authorization: "Bearer " + Cookies.get("Ciastko") },
-        })
-        .then((result) => {
+      axios.post(API, form, {headers: { Authorization: "Bearer " + Cookies.get("Ciastko") },}).then((result) => {
           navigate(`/gallery/${params.id}`);
         })
         .catch((error) => {
@@ -71,7 +67,8 @@ const UploadAndDisplayImage = () => {
   const handlePhotoSubmit = async (event) => {
     if (!(formData.photo_file == null)) {
       if (formData.name == "") {
-        formData.name = formData.photo_file.name;
+        formData.name = formData.photo_file.name.slice(0,`${formData.photo_file.name}`.length-4);
+        // console.log(formData.photo_file.name.slice(0,`${formData.photo_file.name}`.length-4));
       }
       if (formData.owner == "") {
         formData.owner = "unknown";
