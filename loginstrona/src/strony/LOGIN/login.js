@@ -10,8 +10,8 @@ import Cookies from "js-cookie";
 function Login_strona() {
   const API = "http://localhost:5000/api/user/login";
 
-  const [username, setUsername] = useState("Test@Test.com");
-  const [password, setPassword] = useState("123");
+  const [username, setUsername] = useState("");//Test@Test.com
+  const [password, setPassword] = useState("");//123
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);

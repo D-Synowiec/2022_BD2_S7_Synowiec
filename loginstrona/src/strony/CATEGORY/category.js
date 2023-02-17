@@ -24,6 +24,8 @@ function Category_strona() {
   const [categoryName, setCategoryName] = useState([]);
 
   const API = `http://127.0.0.1:5000/api/category/${params.id}`;
+  const API1 = `http://127.0.0.1:5000/api/category/${params.id}/add`;
+  const API2 = `http://127.0.0.1:5000/api/category/${params.id}/remove`;
   function getCategoryGalleries() {
     axios
       .get(API, {
@@ -64,13 +66,18 @@ function Category_strona() {
     if (!addGalName.replace(/\s/g, "").length) {
       setActive(true);
     } else {
-      axios.post(API,{ GalleryName: addGalName },{ headers: { Authorization: "Bearer " + Cookies.get("Ciastko") } }).then((result) => {                   //!!!!!!!!!!!!
-          console.log('add');
-          
+      axios.post(API1,{ name: addGalName },{ headers: { Authorization: "Bearer " + Cookies.get("Ciastko") } }).then((result) => {
+          getCategoryGalleries()
         })
         .catch((error) => {
           if (error.message === "Request failed with status code 401") {
             navigate("/login");
+          }
+          if (error.message == "Request failed with status code 404") {
+            setActive(true);
+          }
+          if (error.message == "Request failed with status code 409") {
+            setActive(true);
           }
         });
     }
@@ -85,17 +92,16 @@ function Category_strona() {
     if (!removeGalName.replace(/\s/g, "").length) {
       setActive2(true);
     } else {
-      axios.delete(API,{ GalleryName: addGalName },{ headers: { Authorization: "Bearer " + Cookies.get("Ciastko") } }).then((result) => {
-          console.log('remove');
-
+      axios.post(API2,{ name: removeGalName },{ headers: { Authorization: "Bearer " + Cookies.get("Ciastko") } }).then((result) => {
+          getCategoryGalleries()
         })
         .catch((error) => {
-          // if (error.message === "Request failed with status code 401") {
-          //   navigate("/login");
-          // }                                                                    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          // if (error.message == "Request failed with status code 404") {
-          //   setActive2(true);
-          // }
+          if (error.message === "Request failed with status code 401") {
+            navigate("/login");
+          }
+          if (error.message == "Request failed with status code 500") {
+            setActive2(true);
+          }
         });
     }
   };
