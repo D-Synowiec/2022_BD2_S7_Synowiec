@@ -147,4 +147,5 @@ backup/
 .help_links
 old_models/
 gen_models/
+hashme.js
 # End of https://www.toptal.com/developers/gitignore/api/node
