@@ -1,17 +1,17 @@
-.zdjecia{ 
-    padding: 10px;
-    display: grid;
-    background-color: rgb(166, 171, 184);
-    
-    border-radius: 15px;
-    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.5);
-    margin: 5px;
+.zdjecia {
+  padding: 10px;
+  display: grid;
+  background-color: rgb(166, 171, 184);
+
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
+  margin: 5px;
 }
 
 /* .zdjecia :hover{
     background-color: rgb(100, 104, 122);
 } */
 
-.opisZdj{
-    color:rgb(47, 49, 59);
+.opisZdj {
+  color: rgb(47, 49, 59);
 }

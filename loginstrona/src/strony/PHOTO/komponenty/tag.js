@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 export const Tag = (params) => {
-  return (
-    <div>
-        {params.name}
-    </div>
-  )
-}
+  return <div>{params.name}</div>;
+};
 
 export default Tag;

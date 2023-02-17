@@ -1,60 +1,55 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./categories.css";
-import {useNavigate} from "react-router-dom";
-import Linjika from "./komponenty/linijka"
-import Gora from "./komponenty/gorna_linijka"
+import { useNavigate } from "react-router-dom";
+import Linjika from "./komponenty/linijka";
+import Gora from "./komponenty/gorna_linijka";
 import Bar from "../../komponenty/NavBar.js";
 import Cookies from "js-cookie";
-import axios from 'axios';
+import axios from "axios";
 
-function Categories(){
+function Categories() {
   let przekierunkowanie = useNavigate();
   const navigate = useNavigate();
 
-  const API = 'http://127.0.0.1:5000/api/category/';
-    useEffect(() => {
+  const API = "http://127.0.0.1:5000/api/category/";
+  useEffect(() => {
     getCategories();
-  },[]);
-  const [kategorie, setCategories]=useState([]);
+  }, []);
+  const [kategorie, setCategories] = useState([]);
 
-     function getCategories(){
-        axios.get(API,{'headers': {'Authorization': 'Bearer ' + Cookies.get("Ciastko")}}).then((result) =>
-        {
-            setCategories(result.data);
-            // console.log(result.data);
-        }).catch((error)=>{
-          if (error.message==='Request failed with status code 401'){
-            navigate('/login');
+  function getCategories() {
+    axios
+      .get(API, {
+        headers: { Authorization: "Bearer " + Cookies.get("Ciastko") },
+      })
+      .then((result) => {
+        setCategories(result.data);
+        // console.log(result.data);
+      })
+      .catch((error) => {
+        if (error.message === "Request failed with status code 401") {
+          navigate("/login");
         }
+      });
+  }
 
-            });
-    }
+  useEffect(() => {
+    setCategories(kategorie);
+  }, [kategorie]);
 
-    useEffect(() => {
-      setCategories(kategorie);
-    }, [kategorie]);
+  const rysunek_linjiki = kategorie.map((element, index) => {
+    return <Linjika key={index} name={element.name} parentID={element.id} />;
+  });
 
-    const rysunek_linjiki = kategorie.map((element,index)=>{
-      return(
-        <Linjika 
-        key={index}
-        name={element.name}
-        parentID={element.id}
-        />
-      )
-    })
+  return (
+    <div className="stronaKategorii">
+      <Bar />
+      <Gora />
+      {rysunek_linjiki}
+    </div>
+  );
 
-    return (
-      <div className='stronaKategorii'>
-        <Bar/>
-        <Gora/>
-        {rysunek_linjiki}
-      </div>
-      
-      );
-
-
-    /*const handleSubmit = (event) => {
+  /*const handleSubmit = (event) => {
       //przekierunkowanie("/https://www.twitch.tv/popo");
       //window.location.href="https://www.twitch.tv/popo";
       //window.location.href="http://localhost:3000/login"

@@ -1,41 +1,33 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import styl from "./logout_style.module.css";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+function Logout1_strona() {
+  let przekierunkowanie = useNavigate();
 
-function Logout1_strona(){
+  const handleSubmit = async (event) => {
+    //przekierunkowanie("/https://www.twitch.tv/popo");
+    //window.location.href="https://www.twitch.tv/popo";
+    //window.location.href="http://localhost:3000/home"
 
-    
-  
-    let przekierunkowanie = useNavigate();
+    event.preventDefault();
+    przekierunkowanie("/options");
 
-    const handleSubmit = async (event) => {
-      
-      //przekierunkowanie("/https://www.twitch.tv/popo");
-      //window.location.href="https://www.twitch.tv/popo";
-      //window.location.href="http://localhost:3000/home"
-      
+    // validate the form values
+    // call a login function
+  };
 
-      event.preventDefault();
-      przekierunkowanie ('/options');
-
-
-      // validate the form values
-      // call a login function
-    }
-
-return (
+  return (
     <div className={styl.moj_div}>
       <form className={styl.user_pass} onSubmit={handleSubmit}>
-          
-          
         <p>Błędne hasło</p>
 
-        <button className={styl.styl_przyc} type="submit">Powrót</button>
+        <button className={styl.styl_przyc} type="submit">
+          Powrót
+        </button>
       </form>
     </div>
-    
-    );
+  );
 }
 
-export default Logout1_strona
+export default Logout1_strona;

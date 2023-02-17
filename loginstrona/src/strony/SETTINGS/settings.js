@@ -69,9 +69,9 @@ const Settings = () => {
           // console.log(result.data);
         })
         .catch((error) => {
-          if (error.message==='Request failed with status code 401'){
-            navigate('/login');
-        }
+          if (error.message === "Request failed with status code 401") {
+            navigate("/login");
+          }
         });
 
       //console.log(res);
@@ -96,9 +96,9 @@ const Settings = () => {
           //console.log(res);
         })
         .catch((error) => {
-          if (error.message==='Request failed with status code 401'){
-            navigate('/login');
-        }
+          if (error.message === "Request failed with status code 401") {
+            navigate("/login");
+          }
           //console.log(error);
         });
     } catch (err) {
@@ -120,9 +120,9 @@ const Settings = () => {
           //console.log(res);
         })
         .catch((error) => {
-          if (error.message==='Request failed with status code 401'){
-            navigate('/login');
-        }
+          if (error.message === "Request failed with status code 401") {
+            navigate("/login");
+          }
           //console.log(error);
         });
     } catch (err) {
@@ -145,9 +145,9 @@ const Settings = () => {
             //console.log(res.status);
           })
           .catch((error) => {
-            if (error.message==='Request failed with status code 401'){
-              navigate('/login');
-          }
+            if (error.message === "Request failed with status code 401") {
+              navigate("/login");
+            }
             //console.log(error);
             //tutaj zrób przekierunkowanie
             przekierunkowanie("/wrong_password_options");
