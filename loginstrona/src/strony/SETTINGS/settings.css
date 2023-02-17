@@ -1,22 +1,94 @@
-body{
-    background-color: rgb(192, 193, 196);
+body {
+  background-color: rgb(192, 193, 196);
 }
 
-.settingsStrona .tekst{
-    padding: 10px;
-    margin-top: 40px;
-    text-align: center;
+.settingsStrona .tekst {
+  padding: 10px;
+  margin-top: 40px;
+  text-align: center;
 }
 
-.settingsStrona .tekst .naglowek{
-    font-size: 4rem;
-    color: black;
-    margin-bottom: 60px;
+.settingsStrona .tekst .naglowek {
+  font-size: 4rem;
+  color: black;
+  margin-bottom: 60px;
 }
 
-.settingsStrona .tekst .opis{
-    text-align: left;
-    margin-left:20%;
-    margin-right: 20%;
-    font-size: 2rem;
+.settingsStrona .tekst .opis {
+  text-align: left;
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: 2rem;
+}
+
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
+
+.user_passs {
+  /* background-color: rgb(181, 184, 190); */
+  /*
+    width: 250px;
+    height: 200px;
+    */
+  /* position: absolute; */
+  /* top: 50%;
+    left: 50%; */
+  /* transform: translate(-50%,-50%); */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px;
+  text-align: left;
+
+  /* font-family: 'Noto Sans', sans-serif; */
+  border-radius: 10px;
+  border-color: rgb(153, 5, 5);
+}
+
+.user_pass > button {
+  /* font-family: 'Noto Sans', sans-serif; */
+}
+
+.foto {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+.input {
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: rgb(91, 89, 145);
+}
+
+.styl_przyc {
+  /* background-color: white; */
+  width: 120px;
+  height: 25px;
+  border-radius: 5px;
+  /* overflow: hidden; */
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
+  font-size: 0.75rem;
+}
+
+.styl_przyc2 {
+  /* background-color: white; */
+  width: 160px;
+  height: 25px;
+  border-radius: 5px;
+  /* overflow: hidden; */
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
+  font-size: 0.75rem;
+}
+
+.styl_przyc:hover {
+  /* background-color: rgb(177, 177, 177); */
+}
+
+.styl_przyc:active {
+  box-shadow: none;
+  transform: translateY(2px);
+  transition: 0.1s;
 }

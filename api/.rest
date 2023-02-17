@@ -1,0 +1,3 @@
+POST http://localhost:5000/api/user/login
+{"email":"Freont@Test.com",
+"password_hash":"123"}

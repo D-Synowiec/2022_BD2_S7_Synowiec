@@ -1,60 +1,60 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap'); */
 
-.styl_linjiki{
-    /* background-color: purple; */
-    background-color: rgb(47, 49, 59);
-    /*
+.styl_linjiki {
+  /* background-color: purple; */
+  background-color: rgb(47, 49, 59);
+  /*
     width: 250px;
     height: 200px;
     */
-    height: 30px;
-    display: flex;
-    /*flex-direction: row;*//*bo domyślnie jest row*/ 
-    align-items: center;
-    justify-content: space-around;
-    justify-items:center;
-    
-    width: 100%;
-    border:0.5px solid black;
-    border-collapse: collapse;
-    table-layout: fixed;
+  height: 30px;
+  display: flex;
+  /*flex-direction: row;*/ /*bo domyślnie jest row*/
+  align-items: center;
+  justify-content: space-around;
+  justify-items: center;
 
-    padding: 2px;
-    margin-bottom: 10px;
-    /* font-family: 'Noto Sans', sans-serif; */
+  width: 100%;
+  border-bottom: 0.5px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  /* padding: 2px; */
+  margin-bottom: 10px;
+  /* font-family: 'Noto Sans', sans-serif; */
 }
 
-.styl_tekst{
-    /* font-family: 'Noto Sans', sans-serif; */
-    font-size: 1.5rem;
-    width: 17%;
-    overflow: hidden;
-    color: rgb(211, 211, 211);
-    font-size: 25px;
-    text-transform: uppercase;
+.styl_tekst {
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-size: 1.5rem;
+  width: 30%;
+  overflow: hidden;
+  color: rgb(211, 211, 211);
+  font-size: 25px;
+  text-transform: uppercase;
 }
 
-.styl_tekstm{
-    /* font-family: 'Noto Sans', sans-serif; */
-    font-size: 1.5rem;
-    width: 75px;
-    overflow: hidden;
-    color: rgb(211, 211, 211);
-    font-size: 25px;
-    text-transform: uppercase;
+.styl_tekstm {
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-size: 1.5rem;
+  width: 75px;
+  overflow: hidden;
+  color: rgb(211, 211, 211);
+  font-size: 25px;
+  text-transform: uppercase;
 }
 
-.styl_tekstp{
-    /* font-family: 'Noto Sans', sans-serif; */
-    font-size: 1.5rem;
-    width: 75px;
-    overflow: hidden;
+.styl_tekstp {
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-size: 1.5rem;
+  width: 75px;
+  overflow: hidden;
 }
 
-.styl_paska{
-    width:0.5px;
-    height: 30px; /*uwaga na errory tutaj */
-    background-color: black;
+.styl_paska {
+  width: 0.5px;
+  height: 30px; /*uwaga na errory tutaj */
+  background-color: black;
 }
 
 /* .styl_linjiki>*{flex-grow: 0; flex-shrink: 0;} */

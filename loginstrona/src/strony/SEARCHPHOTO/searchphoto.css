@@ -1,30 +1,62 @@
-body{
-    background-color: rgb(192, 193, 196);
+body {
+  background-color: rgb(192, 193, 196);
 }
 
-.searchphotoStrona .tekst{
-    padding: 10px;
-    margin-top: 40px;
-    text-align: center;
+.searchphotoStrona .tekst {
+  padding: 10px;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
-.searchphotoStrona .tekst .naglowek{
-    font-size: 3rem;
-    color: black;
-    margin-bottom: 60px;
+.searchphotoStrona .tekst .naglowek {
+  font-size: 3rem;
+  color: black;
+  margin-bottom: 1rem;
 }
 
-.searchphotoStrona .tekst .opis{
-    text-align: left;
-    margin-left:20%;
-    margin-right: 20%;
-    font-size: 2rem;
+.searchphotoStrona .tekst .opis {
+  text-align: left;
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.searchphotoStrona .tekst .opis .searchTab{
-    text-align: center;
+.searchphotoStrona .tekst .opis .searchTab {
+  text-align: center;
 }
 
-.searchphotoStrona .tekst .opis .searchTab .input{
-    width: 60%;
+.searchphotoStrona .tekst .opis .searchTab .input {
+  width: 60%;
+}
+
+.zdjeciaWyswietlane {
+  margin-left: 10%;
+  margin-right: 10%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.zdjeciaWyswietlane :hover {
+  background-color: rgb(139, 144, 173);
+  transition: 0.1s;
+}
+
+.wyborWyszukania{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width:fit-content;
+  margin-left: 1rem;
+}
+
+.inputTyp{
+  text-align: left;
+}
+
+.przycisk{
+  width:auto;
+  margin-left: 5px;
 }

@@ -1,92 +1,128 @@
 import React, { useState } from "react";
-import axios from 'axios';
-import Bar from "../../komponenty/NavBar.js";
+import axios from "axios";
 import "./uploadPhoto.css";
+import { useParams } from "react-router-dom";
+import Bar from "../../komponenty/NavBar.js";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const UploadAndDisplayImage = () => {
+  const params = useParams();
+  const API = "http://127.0.0.1:5000/api/photo/add";
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: '',
-    owner: '',
-    size: '',
-    resolution: '',
-    galleries: '', //id
-    extension: '',
-    photo_file: null
+    name: "",
+    owner: "",
+    size: "",
+    galleries: "", //id
+    extension: "",
+    photo_file: null,
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChange2 = (e) => {
+    setFormData({
+      ...formData,
+      owner: e.target.value,
     });
   };
 
   const handleFileChange = (e) => {
     setFormData({
       ...formData,
-      photo_file: e.target.files[0]
+      photo_file: e.target.files[0],
     });
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const form = new FormData();
-    form.append('name', formData.name);
-    form.append('email', formData.owner);
-    form.append('photo', formData.photo_file, formData.photo_file.name);
-    
-    axios.post('/api/submit-form', form, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
+    if (!(formData.photo_file == null)) {
+      e.preventDefault();
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("owner", formData.owner);
+      form.append("size", formData.size);
+      form.append("galleries", formData.galleries);
+      form.append("extension", formData.extension);
+      form.append("photo_file", formData.photo_file, formData.photo_file.name);
+
+      axios.post(API, form, {headers: { Authorization: "Bearer " + Cookies.get("Ciastko") },}).then((result) => {
+          navigate(`/gallery/${params.id}`);
+        })
+        .catch((error) => {
+          if (error.message === "Request failed with status code 401") {
+            navigate("/login");
+          }
+          // console.log(error.response);
+        });
+    }
+  };
+
+  const handlePhotoSubmit = async (event) => {
+    if (!(formData.photo_file == null)) {
+      if (formData.name == "") {
+        formData.name = formData.photo_file.name.slice(0,`${formData.photo_file.name}`.length-4);
+        // console.log(formData.photo_file.name.slice(0,`${formData.photo_file.name}`.length-4));
       }
-    })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.error(err);
-      });
+      if (formData.owner == "") {
+        formData.owner = "unknown";
+      } else {
+        formData.owner = formData.owner;
+      }
+      formData.size = formData.photo_file.size;
+      formData.extension = formData.photo_file.type.slice(6);
+      formData.galleries = params.id;
+
+      // console.log(formData);
+      // console.log(formData.photo_file);
+    }
   };
 
   return (
+    //dodac input do ownera
     <>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
+      <Bar />
+      <div className="uploadStrona">
+        <form onSubmit={handleSubmit}>
+          <div>
+            Nazwa:
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            Autor:
+            <input
+              type="text"
+              // name="name"
+              value={formData.owner}
+              onChange={handleChange2}
+            />
+          </div>
+          <div>
+            <input
+              type="file"
+              name="photo"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+          </div>
+          <button onClick={handlePhotoSubmit} type="submit">
+            Dodaj zdjęcie
+          </button>
+        </form>
       </div>
-      <div>
-        <input
-          type="text"
-          name="galleries"
-          value={formData.owner}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <input
-          type="file"
-          name="photo"
-          accept="image/*"
-          onChange={handleFileChange}
-        />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
     </>
   );
-
-
-
-
-
-
 
   // const [selectedImage, setSelectedImage] = useState(null);
 
@@ -110,8 +146,8 @@ const UploadAndDisplayImage = () => {
   //       <br/><br/>
   //       </div>
   //     )}
-     
-  //     <br /> 
+
+  //     <br />
   //     <input
   //       type="file"
   //       accept="image/*"
