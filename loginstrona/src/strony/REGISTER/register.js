@@ -92,7 +92,7 @@ function Register_strona() {
         Wróć
       </button>
       <form className={styl.user_pass} onSubmit={handleSubmit}>
-        <label>Username:</label>
+        <label>Email:</label>
         <input
           className={styl.input}
           type="text"
