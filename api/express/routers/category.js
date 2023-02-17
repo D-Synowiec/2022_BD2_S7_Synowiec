@@ -128,16 +128,23 @@ router.get('/api/category/:cid', auth, async (req, res) => {
 });
 
 // Add category to gallery
-router.post('/api/category/:cid', auth, async (req, res) => {
+router.post('/api/category/:cid/add', auth, async (req, res) => {
+        const galleryName = await models.Gallery.findOne({
+            where: {
+                name: req.body.name,
+                gallery_owner: req.user.id
+            }
+        });
+        if(!galleryName) return res.status(404).send();
         const newCategorized = models.Categorized_Gallery.build({
-            ...req.body,
+            GalleryId: galleryName.id,
             CategoryId: req.params.cid
         });
     try {
         const vibeCheck = await models.Categorized_Gallery.findOne({
             where: {
                 CategoryId: req.params.cid,
-                GalleryId: req.body.GalleryId
+                GalleryId: galleryName.id
             },
             include: {
                 model: models.Gallery,
@@ -156,12 +163,18 @@ router.post('/api/category/:cid', auth, async (req, res) => {
 });
 
 // Remove category from gallery
-router.delete('/api/category/:cid', auth, async (req, res) => {
+router.post('/api/category/:cid/remove', auth, async (req, res) => {
     try {
+        const galleryName = await models.Gallery.findOne({
+            where: {
+                name: req.body.name,
+                gallery_owner: req.user.id
+            }
+        });
         const vibeCheck = await models.Categorized_Gallery.findOne({
             where: {
                 CategoryId: req.params.cid,
-                GalleryId: req.body.GalleryId
+                GalleryId: galleryName.id
             },
             include: {
                 model: models.Gallery,
